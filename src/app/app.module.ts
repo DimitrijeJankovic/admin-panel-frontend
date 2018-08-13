@@ -23,7 +23,12 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { Error404Component } from './errors/404.component';
 import { AuthService } from './user/auth.service';
 import { AuthtRouteActivator } from './user/auth-route-activation.service';
-import { CollapsibleWellComponent, JQ_TOKEN } from './common/index'
+import { 
+  CollapsibleWellComponent, 
+  JQ_TOKEN,
+  SimpleModalComponent,
+  ModalTriggerDirective
+} from './common/index'
 
 declare let jQuery: Object;
 
@@ -39,7 +44,9 @@ declare let jQuery: Object;
     CreateEventSessionComponent,
     SessionListComponent,
     CollapsibleWellComponent,
-    DurationPipe
+    DurationPipe,
+    SimpleModalComponent,
+    ModalTriggerDirective
   ],
   imports: [
     BrowserModule,
@@ -57,6 +64,10 @@ declare let jQuery: Object;
     {
       provide: 'canDeactivateCreateEvent',
       useValue: ckeckDirtyState
+    },
+    {
+      provide: JQ_TOKEN, 
+      useValue: jQuery
     }
   ],
   bootstrap: [AppComponent]

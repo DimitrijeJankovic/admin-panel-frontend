@@ -30,8 +30,6 @@ export class NavbarComponent implements OnInit {
   sreachSessions(searchTerm){
     this.eventsService.sreachSessions(searchTerm).subscribe(sessions => {
       this.foundSessions = sessions
-      console.log(this.foundSessions);
-      
     })
   }
 
