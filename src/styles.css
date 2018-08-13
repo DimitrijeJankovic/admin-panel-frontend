@@ -1,0 +1,25 @@
+/* You can add global styles to this file, and also import other style files */
+body{
+    background-color: #181B20;
+}
+
+h1{
+    color: white;
+}
+
+.thumbnail{
+    padding: 15px;
+    padding-top: 25px;
+    background-color: slategray;
+    color: white;
+    min-height: 240px;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid skyblue;
+    margin: 1em 0;
+    padding: 0; 
+}

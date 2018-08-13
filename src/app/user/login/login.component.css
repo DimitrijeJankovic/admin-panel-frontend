@@ -1,0 +1,23 @@
+.loginUsers{
+    padding: 0 40px;
+    padding-top: 35px;
+    color: white;
+}
+
+em {
+    float: right;
+    color: #E05C65;
+    padding-left: 10px;
+}
+
+.forPass{
+    color: silver;
+    font-size: 15px;
+    margin-top: -15px;
+    padding-right: 10px;
+    cursor: pointer;
+}
+
+.loginBtn{
+    margin-top: 20px;
+}

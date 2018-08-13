@@ -1,0 +1,24 @@
+#srchForm{
+    padding-right: 120px;
+}
+
+@media (max-width: 1200px) { #srchForm{display:none} }
+
+li > a.active { 
+    color: skyblue !important;  
+}
+
+.logout{
+    padding-left: 20px;
+    color: skyblue !important;
+}
+
+.logout:hover{ 
+    text-decoration: underline !important;
+    cursor: pointer;
+}
+
+button.search:hover{
+    background-color: skyblue;
+    color: #363d42 !important;
+}

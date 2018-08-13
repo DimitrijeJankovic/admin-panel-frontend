@@ -1,0 +1,41 @@
+.container{
+    padding-top: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
+    color: white;
+}
+
+.event-img{
+    height: 100px;
+}
+
+.eventThumbnail{padding-bottom: 28px; background-color: slategray; color: white;}
+
+a{
+    cursor: pointer;
+}
+
+.addSession{
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: 1px solid skyblue;
+    color: skyblue !important;
+}
+
+.btns button{
+    color: skyblue; 
+    background-color: #1e2125;
+    border-color: skyblue;
+    margin-right: 5px;
+}
+
+
+.active{
+    background-color: #363d42 !important;
+    color: white !important; 
+    border-color: white !important;
+}
+
+.sortBy{
+    margin-right: 50px;
+}
