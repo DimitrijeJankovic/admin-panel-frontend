@@ -9,6 +9,8 @@ import { ProfileComponent } from './profile.component'
 import { LoginComponent } from './login/login.component'
 import { ReqisterComponent } from './register/reqister.component'
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component'
+import { ResetPasswordPageComponent } from './reset-password-page/reset-password-page.component'
+import { WelcomePageComponent } from './welcome-page/welcome-page.component'
 
 @NgModule({
     imports: [
@@ -21,7 +23,9 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
         ProfileComponent,
         LoginComponent,
         ReqisterComponent,
-        ForgotPasswordComponent
+        ForgotPasswordComponent,
+        ResetPasswordPageComponent,
+        WelcomePageComponent
     ],
     providers: []
 })

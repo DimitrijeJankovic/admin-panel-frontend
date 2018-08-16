@@ -14,7 +14,7 @@ export class EventDetailsComponent implements OnInit {
   filterBy: string = 'all'
   sortBy: string = 'voutes'
 
-  constructor(private eventsService:EventsService, private route:ActivatedRoute) { }
+  constructor(private eventsService:EventsService, private route:ActivatedRoute){}
 
   ngOnInit() {
     this.route.params.forEach((params: Params) => {

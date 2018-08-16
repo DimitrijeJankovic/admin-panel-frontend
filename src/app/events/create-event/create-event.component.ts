@@ -23,7 +23,7 @@ export class CreateEventComponent implements OnInit {
     
   }
 
-  cancle(){
+  cancel(){
     this.router.navigate(['/events'])
   }
 

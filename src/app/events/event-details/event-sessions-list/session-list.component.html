@@ -1,5 +1,8 @@
 <div class="events">
     <div class="row" *ngFor="let session of visibleSessions">
+        <div class="col-md-1">
+            <upvote (vote)="toggleVote(session)" [count]="session.voters.length" [voted]="userHasVoted(session)"></upvote>
+        </div>
         <div class="col-md-10 eventThumbnail">
             <collapsible-well [title]="session.name">
                 

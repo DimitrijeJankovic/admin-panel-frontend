@@ -1,0 +1,8 @@
+<div class="welcome">
+    <h1>Welcome to Admin Panel!</h1>
+</div>
+<div class="urlInvalid">
+    <div *ngIf="invalidCode" class="alert alert-danger">Invalid URL</div>
+    <div *ngIf="userNotActivated" class="alert alert-danger">Problem, user not activated</div>
+    <div *ngIf="userActivated" class="alert alert-success">User Activated</div>
+</div>

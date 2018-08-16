@@ -24,6 +24,17 @@ export class AuthService {
         return this.http.post('http://admin-panel.com:450/oauth', JSON.stringify(loginInfo), options);
     }
 
+    getUser(){
+        let headers = new Headers({
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': 'Bearer '+sessionStorage.getItem('token')
+        })
+        let options = new RequestOptions({headers: headers})
+
+        return this.http.get('http://admin-panel.com:450/user', options)
+    }
+
     newUser( firstName: string, lastName: string, userName: string, email: string, password: string){
         let headers = new Headers({
             'Content-Type': 'application/json',
@@ -42,6 +53,18 @@ export class AuthService {
         return this.http.post('http://admin-panel.com:450/user', JSON.stringify(newUser), options);
     }
 
+    confirmRegitration(code: number){
+        let headers = new Headers({
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        })
+
+        let options = new RequestOptions({headers: headers})
+        console.log('http://admin-panel.com:450/welcome-code?code='+code);
+        
+        return this.http.get('http://admin-panel.com:450/welcome-code?code='+code, options);
+    }
+
     resetPassword(email: string){
         let headers = new Headers({
             'Content-Type': 'application/json',
@@ -54,6 +77,37 @@ export class AuthService {
         }
 
         return this.http.post('http://admin-panel.com:450/forgot-password', JSON.stringify(newPass), options);
+    }
+
+    newPassword(token: string, pass: string){
+        let headers = new Headers({
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        })
+
+        let options = new RequestOptions({headers: headers})
+        let newPass = {
+            "reset": {
+                "token": token,
+                "newPassword": pass
+            }
+        }
+        
+        return this.http.put('http://admin-panel.com:450/forgot-password', newPass, options);
+    }
+
+    validToken(token: string){
+        let headers = new Headers({
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        })
+
+        let options = new RequestOptions({headers: headers})
+        let validToken = {
+            "token": token,
+        }
+        
+        return this.http.post('http://admin-panel.com:450/valid-token', validToken, options);
     }
 
     isAuthenticated(){

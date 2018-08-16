@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/* You can add global styles to this file, and also import other style files */\nbody{\n    background-color: #181B20;\n}\nh1{\n    color: white;\n}\n.thumbnail{\n    padding: 15px;\n    padding-top: 25px;\n    background-color: slategray;\n    color: white;\n}\nhr {\n    display: block;\n    height: 1px;\n    border: 0;\n    border-top: 1px solid skyblue;\n    margin: 1em 0;\n    padding: 0; \n}"
+module.exports = "/* You can add global styles to this file, and also import other style files */\nbody{\n    background-color: #181B20;\n}\nh1{\n    color: white;\n}\n.thumbnail{\n    padding: 15px;\n    padding-top: 25px;\n    background-color: slategray;\n    color: white;\n    min-height: 240px;\n}\nhr {\n    display: block;\n    height: 1px;\n    border: 0;\n    border-top: 1px solid skyblue;\n    margin: 1em 0;\n    padding: 0; \n}"
 
 /***/ }),
 
@@ -539,7 +539,7 @@ if(false) {}
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/userd1/Documents/angular/App/src/styles.css */"./src/styles.css");
+module.exports = __webpack_require__(/*! /var/www/admin_panel_angular/src/styles.css */"./src/styles.css");
 
 
 /***/ })
