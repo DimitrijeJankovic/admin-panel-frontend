@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core'
 import { IUser } from './user.model'
 import { Http, Response, Headers, RequestOptions } from '@angular/http'
 import { Observable } from "rxjs"
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class AuthService {
@@ -21,7 +22,7 @@ export class AuthService {
             "client_secret": password
         }
 
-        return this.http.post('http://admin-panel.com:450/oauth', JSON.stringify(loginInfo), options);
+        return this.http.post(environment.serverUrl + '/oauth', JSON.stringify(loginInfo), options);
     }
 
     getUser(){
@@ -32,7 +33,7 @@ export class AuthService {
         })
         let options = new RequestOptions({headers: headers})
 
-        return this.http.get('http://admin-panel.com:450/user', options)
+        return this.http.get(environment.serverUrl + '/user', options)
     }
 
     newUser( firstName: string, lastName: string, userName: string, email: string, password: string){
@@ -50,7 +51,7 @@ export class AuthService {
             "email": email 
         }
 
-        return this.http.post('http://admin-panel.com:450/user', JSON.stringify(newUser), options);
+        return this.http.post(environment.serverUrl + '/user', JSON.stringify(newUser), options);
     }
 
     confirmRegitration(code: number){
@@ -60,9 +61,8 @@ export class AuthService {
         })
 
         let options = new RequestOptions({headers: headers})
-        console.log('http://admin-panel.com:450/welcome-code?code='+code);
         
-        return this.http.get('http://admin-panel.com:450/welcome-code?code='+code, options);
+        return this.http.get(environment.serverUrl + '/welcome-code?code='+code, options);
     }
 
     resetPassword(email: string){
@@ -76,7 +76,7 @@ export class AuthService {
             "email": email 
         }
 
-        return this.http.post('http://admin-panel.com:450/forgot-password', JSON.stringify(newPass), options);
+        return this.http.post(environment.serverUrl + '/forgot-password', JSON.stringify(newPass), options);
     }
 
     newPassword(token: string, pass: string){
@@ -93,7 +93,7 @@ export class AuthService {
             }
         }
         
-        return this.http.put('http://admin-panel.com:450/forgot-password', newPass, options);
+        return this.http.put(environment.serverUrl + '/forgot-password', newPass, options);
     }
 
     validToken(token: string){
@@ -107,7 +107,7 @@ export class AuthService {
             "token": token,
         }
         
-        return this.http.post('http://admin-panel.com:450/valid-token', validToken, options);
+        return this.http.post(environment.serverUrl + '/valid-token', validToken, options);
     }
 
     isAuthenticated(){
