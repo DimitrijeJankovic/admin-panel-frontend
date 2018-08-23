@@ -1,0 +1,43 @@
+<div id="mian">
+    <h1>Produces</h1>
+
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Address</th>
+                <th scope="col">Secondary Address</th>
+                <th scope="col">City</th>
+                <th scope="col">State</th>
+                <th scope="col">Country</th>
+                <th scope="col">Email</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Web</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor='let producer of producersList'>
+                <th scope="row">{{ producer.producers_id }}</th>
+                <td>{{ producer.producers_name }}</td>
+                <td>{{ producer.address }}</td>
+                <td>{{ producer?.address1 }}</td>
+                <td>{{ producer.city }}</td>
+                <td>{{ producer.state }}</td>
+                <td>{{ producer.name }}</td>
+                <td>{{ producer.email }}</td>
+                <td>{{ producer.phone }}</td>
+                <td>{{ producer?.web }}</td>
+                <td>
+					<i class="far fa-edit" [routerLink]="['edit', producer.producers_id]"></i>
+					<i class="far fa-trash-alt" (click)="deleteProduce(producer.producers_id)"></i>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="float-right">
+        <a href="#" [routerLink]="['new']" routerLinkActive="active" class="btn"><button class="newProduce">Add New</button></a>
+    </div>
+
+</div>

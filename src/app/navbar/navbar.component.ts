@@ -1,36 +1,27 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AuthService } from '../user/auth.service';
+import { AdminAuthService } from '../admin/services/admin-auth.service';
 import { Router } from '@angular/router';
-import { ISession } from '../events';
-import { EventsService } from '../events/index';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent {
 
-  searchTerm: string = ""
-  foundSessions: ISession[]
+  isAdminRoot: boolean = false
 
   constructor(
-    private auth:AuthService, 
-    private router :Router,
-    private eventsService: EventsService
+    private auth:AuthService,
+    private adminAuth: AdminAuthService, 
+    private router: Router,
   ) {}
-
-  ngOnInit() {}
 
   logout(){
     sessionStorage.removeItem('token');
+    sessionStorage.removeItem('adminToken');
 		this.router.navigate(['/']);
-  }
-
-  sreachSessions(searchTerm){
-    this.eventsService.sreachSessions(searchTerm).subscribe(sessions => {
-      this.foundSessions = sessions
-    })
   }
 
 }

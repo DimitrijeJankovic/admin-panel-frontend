@@ -21,7 +21,7 @@ export class AuthService {
             "client_id": userName,
             "client_secret": password
         }
-
+        
         return this.http.post(environment.serverUrl + '/oauth', JSON.stringify(loginInfo), options);
     }
 

@@ -23,3 +23,14 @@ hr {
     margin: 1em 0;
     padding: 0; 
 }
+
+#main{
+    padding-top: 60px;
+    padding-left: 250px;
+}
+
+#main > h1{
+    padding-left: 40px;
+    padding-top: 20px;
+    font-size: 40px;
+}

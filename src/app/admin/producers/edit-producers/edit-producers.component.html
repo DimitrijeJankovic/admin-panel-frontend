@@ -1,0 +1,72 @@
+<div id="main">
+    <h1>Edit Producer</h1>
+    
+    <div class="form col-lg-5 col-md-12 col-sm-12 col-xs-9">
+        <form #producerForm="ngForm" (ngSubmit)="saveProducer(producerForm.value)" autocomplete="off">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <em *ngIf="producerForm.controls.name?.invalid && (producerForm.controls.name?.touched)">Required</em>
+                <input [(ngModel)]="producer.producers_name" name="name" id="name" type="text" class="form-control" placeholder="Producer name..." required/>
+            </div>
+
+            <div class="form-group">
+                <label for="name">Address:</label>
+                <em *ngIf="producerForm.controls.address?.invalid && (producerForm.controls.address?.touched)">Required</em>
+                <input [(ngModel)]="producer.address" name="address" id="address" type="text" class="form-control" placeholder="Producer address..." required/>
+            </div>
+            
+            <div class="form-group">
+                <label for="name">Secondary Address:</label>
+                <em class="optional">(Optional)</em>
+                <input [(ngModel)]="producer.address1" name="secAddress" type="text" class="form-control" placeholder="Producer secondary address..."/>
+            </div>
+
+            <div class="form-group">
+                <label for="name">City:</label>
+                <em *ngIf="producerForm.controls.city?.invalid && (producerForm.controls.city?.touched)">Required</em>
+                <input [(ngModel)]="producer.city" name="city" id="city" type="text" class="form-control" placeholder="Producer city..." required/>
+            </div>
+
+            <div class="form-group">
+                <label for="name">State:</label>
+                <em *ngIf="producerForm.controls.state?.invalid && (producerForm.controls.state?.touched)">Required</em>
+                <input [(ngModel)]="producer.state" name="state" id="state" type="text" class="form-control" placeholder="Producer state..." required/>
+            </div>
+
+            <div class="form-group">
+                <label for="material">Country:</label>
+                <select [(ngModel)]="country" name="country" class="form-control">
+                    <option *ngFor="let countrie of countries" value="{{ countrie.id }}">{{ countrie.name }}</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="name">Email:</label>
+                <em *ngIf="producerForm.controls.email?.invalid && (producerForm.controls.email?.touched)">Required</em>
+                <input [(ngModel)]="producer.email" name="email" id="email" type="text" class="form-control" placeholder="Producer email..." required/>
+            </div>
+
+            <div class="form-group">
+                <label for="name">Phone:</label>
+                <em *ngIf="producerForm.controls.phone?.invalid && (producerForm.controls.phone?.touched)">Required</em>
+                <input [(ngModel)]="producer.phone" name="phone" id="phone" type="text" class="form-control" placeholder="Producer phone..." required/>
+            </div>
+
+            <div class="form-group">
+                <label for="name">Web:</label>
+                <em class="optional">(Optional)</em>
+                <input [(ngModel)]="producer.web" name="web" type="text" class="form-control" placeholder="Producer web..."/>
+            </div>
+
+            <button type="submit" class="btn btn-primary" [disabled]="producerForm.invalid">Save</button>
+            <button type="button" class="cBtn btn btn-default" (click)="cancel()">Cancel</button>
+        </form>
+        <br>
+        <br>
+        <div *ngIf="emptyfelds" class="alert alert-danger">Please, fill all the fields!</div>
+        <div *ngIf="notCreated" class="alert alert-danger">Failed to edit producer!</div>
+        <div *ngIf="problem" class="alert alert-danger">Failed to get Producer data!</div>
+        <div *ngIf="noCountries" class="alert alert-danger">Failed to get countries!</div>
+        <div *ngIf="newPoduce" class="alert alert-success">Producer edit!</div>
+    </div>
+</div>

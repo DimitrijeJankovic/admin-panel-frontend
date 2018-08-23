@@ -5,32 +5,17 @@ import { appRoutes } from './routes';
 import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
-import {
-  EventsListComponent,
-  EventThumbnailComponent,
-  EventsService,
-  EventDetailsComponent,
-  CreateEventComponent,
-  EventRouteActivator,
-  EventsListResolver,
-  CreateEventSessionComponent,
-  SessionListComponent,
-  DurationPipe,
-  UpvoteComponent,
-  VoterService,
-  LocationValidator
-} from './events/index'
+
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { Error404Component } from './errors/404.component';
 import { AuthService } from './user/auth.service';
+import { AdminAuthService } from './admin/services/admin-auth.service'
 import { AuthtRouteActivator } from './user/auth-route-activation.service';
+import { AdminAuthtRouteActivator } from './admin/services/admin-auth-route-activation-service'
 import { 
-  CollapsibleWellComponent, 
-  JQ_TOKEN,
-  SimpleModalComponent,
-  ModalTriggerDirective
+  JQ_TOKEN
 } from './common/index'
 
 declare let jQuery: Object;
@@ -38,20 +23,9 @@ declare let jQuery: Object;
 @NgModule({
   declarations: [
     AppComponent,
-    EventsListComponent,
-    EventThumbnailComponent,
     NavbarComponent,
-    EventDetailsComponent,
-    CreateEventComponent,
     Error404Component,
-    CreateEventSessionComponent,
-    SessionListComponent,
-    CollapsibleWellComponent,
-    DurationPipe,
-    SimpleModalComponent,
-    ModalTriggerDirective,
-    UpvoteComponent,
-    LocationValidator
+    
   ],
   imports: [
     BrowserModule,
@@ -61,16 +35,10 @@ declare let jQuery: Object;
     HttpModule
   ],
   providers: [
-    EventsService,
-    EventRouteActivator,
     AuthtRouteActivator,
-    EventsListResolver,
+    AdminAuthtRouteActivator,
     AuthService,
-    VoterService,
-    {
-      provide: 'canDeactivateCreateEvent',
-      useValue: ckeckDirtyState
-    },
+    AdminAuthService,
     {
       provide: JQ_TOKEN, 
       useValue: jQuery
@@ -80,9 +48,5 @@ declare let jQuery: Object;
 })
 export class AppModule { }
 
-function ckeckDirtyState(component: CreateEventComponent){
-  if(component.isDirty)
-    return window.confirm('You have not save event, do you relly wont to cancel?')
-  return true
-}
+
  

@@ -1,3 +1,12 @@
+#fixed-nav{
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+    top: 0px;
+    left: 0;
+    overflow-x: hidden;
+}
+
 #srchForm{
     padding-right: 120px;
 }

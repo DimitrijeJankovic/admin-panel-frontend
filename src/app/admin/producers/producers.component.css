@@ -1,0 +1,35 @@
+#mian{
+    padding-top: 60px;
+    padding-left: 250px;
+}
+
+h1{
+    padding-left: 40px;
+    padding-top: 20px;
+    font-size: 40px;
+    color: white;
+}
+
+.table{
+    color: white !important;
+    margin-top: 40px;
+    margin-left: 10px;
+}
+
+td i{
+    padding: 0px 10px;
+}
+
+td i:hover{
+    cursor: pointer;
+    color: skyblue;
+}
+
+.newProduce{
+    color: skyblue;
+    background-color: #181B20;
+    border: 1px solid skyblue;
+    border-radius: 5px;
+    padding: 7px 15px;
+    cursor: pointer;
+}
