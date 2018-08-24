@@ -1,3 +1,56 @@
 <div id="main">
     <h1>Materials</h1>
+
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Type</th>
+                <th scope="col">Width</th>
+                <th scope="col">Height</th>
+                <th scope="col">Depth</th>
+                <th scope="col">Code</th>
+                <th scope="col">Description</th>
+                <th scope="col">Image</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor='let material of materialsList'>
+                <th scope="row">{{ material.material_id }}</th>
+                <td>{{ material.material_name }}</td>
+                <td>{{ material.name }}</td>
+                <td>{{ material.original_width }}</td>
+                <td>{{ material.original_height }}</td>
+                <td>{{ material.original_depth }}</td>
+                <td>{{ material.code }}</td>
+                <td>{{ material.description_m }}</td>
+                <td>
+                    <div *ngIf='material.image_url' class='photoImg'>
+                        <img src="{{ material.image_url }}">
+                        <div class="removePhoto" (click)="removePhoto(material.material_id)">
+                            <span class='fas fa-unlink'></span>
+                            <i>remove image</i>
+                        </div>
+                    </div>
+                    <div *ngIf="!material.image_url" class='image-upload'>
+                        <label for="file-input">
+                            <span (click)='setUploadId(material.material_id, "photo")'></span>
+                            <img src="./../../../assets//images/upload.png"/>
+                            <i>click to upload photo</i>
+                        </label>
+                        <input id="file-input" type="file" ng2FileSelect>
+                    </div>
+                </td>
+                <td>
+                    <i class="far fa-edit" [routerLink]="['edit', material.material_id]"></i>
+                    <i class="far fa-trash-alt" (click)="deleteMaterial(material.material_id)"></i>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="float-right">
+        <a href="#" [routerLink]="['new']" routerLinkActive="active" class="btn"><button class="newProduce">Add New</button></a>
+    </div>
 </div>

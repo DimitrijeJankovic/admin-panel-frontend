@@ -1,0 +1,64 @@
+.table{
+    color: white !important;
+    margin-top: 40px;
+    margin-left: 10px;
+}
+
+td i{
+    padding: 0px 10px;
+}
+
+td i:hover{
+    cursor: pointer;
+    color: skyblue;
+}
+
+.newProduce{
+    color: skyblue;
+    background-color: #181B20;
+    border: 1px solid skyblue;
+    border-radius: 5px;
+    padding: 7px 15px;
+    cursor: pointer;
+}
+
+table tbody td:nth-child(9){
+    width: 250px;
+	min-height: 200px;
+}
+
+.noGroupPhoto {
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+}
+
+.noGroupPhoto span {
+    display: block;
+    width: 100%;
+    font-size: 45px;
+    color: white;
+}
+
+.noGroupPhoto i {
+    display: block;
+    width: 100%;
+    color: white;
+    font-size: 14px;
+}
+
+
+
+
+.image-upload > input
+{
+    display: none;
+}
+
+.image-upload img
+{
+    width: 30px;
+    cursor: pointer;
+}

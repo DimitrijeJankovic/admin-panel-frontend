@@ -10,7 +10,7 @@ import { ProducersService, IProducers } from '../services/producers.service';
 
 export class ProducersComponent implements OnInit{
 
-    producersList:IProducers[]
+    producersList:IProducers
 
     constructor(private producersService:ProducersService, 
                 private route:ActivatedRoute){}
@@ -26,7 +26,7 @@ export class ProducersComponent implements OnInit{
     }
 
     deleteProduce(id) {
-	    this.producersService.deleteProducer(id).subscribe(e => { this.getAllProduces() })
+		this.producersService.deleteProducer(id).subscribe( e => { this.getAllProduces() })
 	}
 
 

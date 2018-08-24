@@ -1,0 +1,24 @@
+.form{
+    padding-top: 20px;
+    padding-left: 60px;
+    color: white;
+}
+
+.btn{
+    margin-right: 15px;
+}
+
+em { float:right; 
+    color: #E05C65; 
+    padding-left: 10px; 
+}
+
+.error input, .error select, .error textarea { background-color: #E3C3C5; }
+.error ::-webkit-input-placeholder { color:#999 }
+.error ::-moz-placeholder { color:#999 }
+.error :-moz-placeholder { color:#999 }
+.error ::ms-input-placeholder { color:#999 }
+
+.optional{
+    color: #70777a !important;
+}

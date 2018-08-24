@@ -1,0 +1,60 @@
+<div id="main">
+    <h1>New Material</h1>
+
+    <div class="form col-lg-5 col-md-12 col-sm-12 col-xs-9">
+        <form #materialForm="ngForm" (ngSubmit)="saveMaterial(materialForm.value)" autocomplete="off">
+
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <em *ngIf="materialForm.controls.name?.invalid && (materialForm.controls.name?.touched)">Required</em>
+                <input (ngModel)="name" name="name" id="name" type="text" class="form-control" placeholder="Material name..." required/>
+            </div>
+
+            <div class="form-group">
+                <label for="material">Material Type:</label>
+                <select (ngModel)="material" name="material" class="form-control">
+                    <option *ngFor="let type of types" value="{{ type.id }}">{{ type.name }}</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="name">Width:</label>
+                <em *ngIf="materialForm.controls.width?.invalid && (materialForm.controls.width?.touched)">Required</em>
+                <input (ngModel)="width" name="width" id="width" type="number" step="0.01" min="0" class="form-control" placeholder="Material width..." required/>
+            </div>
+
+            <div class="form-group">
+                <label for="name">Height:</label>
+                <em *ngIf="materialForm.controls.height?.invalid && (materialForm.controls.height?.touched)">Required</em>
+                <input (ngModel)="height" name="height" id="height" type="number" step="0.01" min="0" class="form-control" placeholder="Material height..." required/>
+            </div>
+
+            <div class="form-group">
+                <label for="name">Depth:</label>
+                <em *ngIf="materialForm.controls.depth?.invalid && (materialForm.controls.depth?.touched)">Required</em>
+                <input (ngModel)="depth" name="depth" id="depth" type="number" step="0.01" min="0" class="form-control" placeholder="Material depth..." required/>
+            </div>
+
+            <div class="form-group">
+                <label for="name">Code:</label>
+                <em *ngIf="materialForm.controls.code?.invalid && (materialForm.controls.code?.touched)">Required</em>
+                <input (ngModel)="code" name="code" id="code" type="text" class="form-control" placeholder="Material code..." required/>
+            </div>
+
+            <div class="form-group">
+                <em *ngIf="materialForm.controls.desc?.invalid && (materialForm.controls.desc?.touched)">Required</em>
+                <label for="comment">Description:</label>
+                <textarea (ngModel)="desc" name="desc" class="form-control" rows="5" id="desc"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary" [disabled]="materialForm.invalid">Save</button>
+            <button type="button" class="cBtn btn btn-default" (click)="cancel()">Cancel</button>
+        </form>
+        <br>
+        <br>
+        <div *ngIf="emptyfelds" class="alert alert-danger">Please, fill all the fields!</div>
+        <div *ngIf="notCreated" class="alert alert-danger">Failed to create new material!</div>
+        <div *ngIf="noTypes" class="alert alert-danger">Failed to get matirial typs!</div>
+        <div *ngIf="newMaterial" class="alert alert-success">Material created!</div>
+    </div>
+</div>

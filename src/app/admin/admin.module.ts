@@ -15,6 +15,10 @@ import { EditProducersComponent } from './producers/edit-producers/edit-producer
 import { ProducersService } from './services/producers.service'
 
 import { MaterialsComponent } from './materials/materials.component'
+import { NewMaterialsComponent } from './materials/new-materials/new-materials.component'
+import { EditMaterialsComponent } from './materials/edit-materials/edit-materials.component'
+import { MaterialsService } from './services/materials.service'
+
 import { OrdersComponent } from './orders/orders.component'
 
 @NgModule({
@@ -32,10 +36,13 @@ import { OrdersComponent } from './orders/orders.component'
         NewProducersComponent,
         EditProducersComponent,
         MaterialsComponent,
+        NewMaterialsComponent,
+        EditMaterialsComponent,
         OrdersComponent
     ],
     providers: [
-        ProducersService
+        ProducersService,
+        MaterialsService
     ]
 })
 

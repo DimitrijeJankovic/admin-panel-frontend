@@ -7,6 +7,9 @@ import { NewProducersComponent } from './producers/new-producers/new-producers.c
 import { EditProducersComponent } from './producers/edit-producers/edit-producers.component'
 
 import { MaterialsComponent } from './materials/materials.component'
+import { NewMaterialsComponent } from './materials/new-materials/new-materials.component'
+import { EditMaterialsComponent } from './materials/edit-materials/edit-materials.component'
+
 import { OrdersComponent } from './orders/orders.component'
 
 
@@ -16,6 +19,8 @@ export const adminRoutes = [
         { path: 'producers/new', component: NewProducersComponent },
         { path: 'producers/edit/:id', component: EditProducersComponent },
         { path: 'materials', component: MaterialsComponent },
+        { path: 'materials/new', component: NewMaterialsComponent },
+        { path: 'materials/edit/:id', component: EditMaterialsComponent },
         { path: 'orders', component: OrdersComponent },
     ], canActivate: [AdminAuthtRouteActivator]},
     
