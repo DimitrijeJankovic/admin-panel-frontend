@@ -16,3 +16,5 @@
 .DS_Store
 Thumbs.db
 /nbproject/private/
+
+/src/assets/images/materials

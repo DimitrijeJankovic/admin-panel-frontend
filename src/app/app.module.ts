@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { appRoutes } from './routes';
 import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
-
+import { FileUploadModule } from 'ng2-file-upload';
 
 
 import { AppComponent } from './app.component';
@@ -24,15 +24,15 @@ declare let jQuery: Object;
   declarations: [
     AppComponent,
     NavbarComponent,
-    Error404Component,
-    
+    Error404Component
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
     FormsModule,
     ReactiveFormsModule,
-    HttpModule
+    HttpModule,
+    FileUploadModule
   ],
   providers: [
     AuthtRouteActivator,

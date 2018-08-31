@@ -28,19 +28,18 @@
                 <td>{{ material.description_m }}</td>
                 <td>
                     <div *ngIf='material.image_url' class='photoImg'>
-                        <img src="{{ material.image_url }}">
+                        <img src="{{ env + material.image_url }}">
                         <div class="removePhoto" (click)="removePhoto(material.material_id)">
-                            <span class='fas fa-unlink'></span>
+                            <span class='far fa-trash-alt'></span>
                             <i>remove image</i>
                         </div>
                     </div>
                     <div *ngIf="!material.image_url" class='image-upload'>
-                        <label for="file-input">
-                            <span (click)='setUploadId(material.material_id, "photo")'></span>
-                            <img src="./../../../assets//images/upload.png"/>
+                        <label for="file-input" (click)='setUploadId(material.material_id)'>
+                            <img src="./../../../assets//images/upload.png" />
                             <i>click to upload photo</i>
                         </label>
-                        <input id="file-input" type="file" ng2FileSelect>
+                        <input id="file-input" type="file" ng2FileSelect [uploader]="uploader">
                     </div>
                 </td>
                 <td>

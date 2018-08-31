@@ -1,72 +1,60 @@
 <div id="main">
-        <h1>Edit Material</h1>
-    
-        <div class="form col-lg-5 col-md-12 col-sm-12 col-xs-9">
-            <form #producerForm="ngForm" (ngSubmit)="saveProducer(producerForm.value)" autocomplete="off">
-    
-                <div class="form-group">
-                    <label for="name">Name:</label>
-                    <em *ngIf="producerForm.controls.name?.invalid && (producerForm.controls.name?.touched)">Required</em>
-                    <input (ngModel)="name" name="name" id="name" type="text" class="form-control" placeholder="Producer name..." required/>
-                </div>
-    
-                <div class="form-group">
-                    <label for="name">Address:</label>
-                    <em *ngIf="producerForm.controls.address?.invalid && (producerForm.controls.address?.touched)">Required</em>
-                    <input (ngModel)="address" name="address" id="address" type="text" class="form-control" placeholder="Producer address..." required/>
-                </div>
-                
-                <div class="form-group">
-                    <label for="name">Secondary Address:</label>
-                    <em class="optional">(Optional)</em>
-                    <input (ngModel)="secAddress" name="secAddress" type="text" class="form-control" placeholder="Producer secondary address..."/>
-                </div>
-    
-                <div class="form-group">
-                    <label for="name">City:</label>
-                    <em *ngIf="producerForm.controls.city?.invalid && (producerForm.controls.city?.touched)">Required</em>
-                    <input (ngModel)="city" name="city" id="city" type="text" class="form-control" placeholder="Producer city..." required/>
-                </div>
-    
-                <div class="form-group">
-                    <label for="name">State:</label>
-                    <em *ngIf="producerForm.controls.state?.invalid && (producerForm.controls.state?.touched)">Required</em>
-                    <input (ngModel)="state" name="state" id="state" type="text" class="form-control" placeholder="Producer state..." required/>
-                </div>
-    
-                <div class="form-group">
-                    <label for="material">Country:</label>
-                    <select (ngModel)="country" name="country" class="form-control">
-                        <option *ngFor="let countrie of countries" value="{{ countrie.id }}">{{ countrie.name }}</option>
-                    </select>
-                </div>
-    
-                <div class="form-group">
-                    <label for="name">Email:</label>
-                    <em *ngIf="producerForm.controls.email?.invalid && (producerForm.controls.email?.touched)">Required</em>
-                    <input (ngModel)="email" name="email" id="email" type="text" class="form-control" placeholder="Producer email..." required/>
-                </div>
-    
-                <div class="form-group">
-                    <label for="name">Phone:</label>
-                    <em *ngIf="producerForm.controls.phone?.invalid && (producerForm.controls.phone?.touched)">Required</em>
-                    <input (ngModel)="phone" name="phone" id="phone" type="text" class="form-control" placeholder="Producer phone..." required/>
-                </div>
-    
-                <div class="form-group">
-                    <label for="name">Web:</label>
-                    <em class="optional">(Optional)</em>
-                    <input (ngModel)="web" name="web" type="text" class="form-control" placeholder="Producer web..."/>
-                </div>
-    
-                <button type="submit" class="btn btn-primary" [disabled]="producerForm.invalid">Save</button>
-                <button type="button" class="cBtn btn btn-default" (click)="cancel()">Cancel</button>
-            </form>
-            <br>
-            <br>
-            <div *ngIf="emptyfelds" class="alert alert-danger">Please, fill all the fields!</div>
-            <div *ngIf="notCreated" class="alert alert-danger">Failed to create new product!</div>
-            <div *ngIf="noCountries" class="alert alert-danger">Failed to get countries!</div>
-            <div *ngIf="newPoduce" class="alert alert-success">Produce created!</div>
-        </div>
+    <h1>Edit Material</h1>
+
+    <div class="form col-lg-5 col-md-12 col-sm-12 col-xs-9">
+        <form #materialForm="ngForm" (ngSubmit)="editMaterial(materialForm.value)" autocomplete="off">
+
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <em *ngIf="materialForm.controls.name?.invalid && (materialForm.controls.name?.touched)">Required</em>
+                <input [(ngModel)]="material.material_name" name="name" id="name" type="text" class="form-control" placeholder="Material name..." required/>
+            </div>
+
+            <div class="form-group">
+                <label for="material">Material Type:</label>
+                <select [(ngModel)]="material.name" name="material" class="form-control">
+                    <option *ngFor="let type of types" value="{{ type.id }}">{{ type.name }}</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="name">Width:</label>
+                <em *ngIf="materialForm.controls.width?.invalid && (materialForm.controls.width?.touched)">Required</em>
+                <input [(ngModel)]="material.original_width" name="width" id="width" type="number" step="0.01" min="0" class="form-control" placeholder="Material width..." required/>
+            </div>
+
+            <div class="form-group">
+                <label for="name">Height:</label>
+                <em *ngIf="materialForm.controls.height?.invalid && (materialForm.controls.height?.touched)">Required</em>
+                <input [(ngModel)]="material.original_height" name="height" id="height" type="number" step="0.01" min="0" class="form-control" placeholder="Material height..." required/>
+            </div>
+
+            <div class="form-group">
+                <label for="name">Depth:</label>
+                <em *ngIf="materialForm.controls.depth?.invalid && (materialForm.controls.depth?.touched)">Required</em>
+                <input [(ngModel)]="material.original_depth" name="depth" id="depth" type="number" step="0.01" min="0" class="form-control" placeholder="Material depth..." required/>
+            </div>
+
+            <div class="form-group">
+                <label for="name">Code:</label>
+                <em *ngIf="materialForm.controls.code?.invalid && (materialForm.controls.code?.touched)">Required</em>
+                <input [(ngModel)]="material.code" name="code" id="code" type="text" class="form-control" placeholder="Material code..." required/>
+            </div>
+
+            <div class="form-group">
+                <em class="optional">(Optional)</em>
+                <label for="comment">Description:</label>
+                <textarea [(ngModel)]="material.description_m" name="desc" class="form-control" rows="5" id="desc"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary" [disabled]="materialForm.invalid">Save</button>
+            <button type="button" class="cBtn btn btn-default" (click)="cancel()">Cancel</button>
+        </form>
+        <br>
+        <br>
+        <div *ngIf="emptyfelds" class="alert alert-danger">Please, fill all the fields!</div>
+        <div *ngIf="notCreated" class="alert alert-danger">Failed to edit material!</div>
+        <div *ngIf="noTypes" class="alert alert-danger">Failed to get matirial typs!</div>
+        <div *ngIf="editedMaterial" class="alert alert-success">Material edit!</div>
     </div>
+</div>

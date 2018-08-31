@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { RouterModule } from '@angular/router'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { FileUploadModule } from 'ng2-file-upload';
 
 import { adminRoutes } from './admin.routes'
 
@@ -20,13 +21,16 @@ import { EditMaterialsComponent } from './materials/edit-materials/edit-material
 import { MaterialsService } from './services/materials.service'
 
 import { OrdersComponent } from './orders/orders.component'
+import { OrdersService } from  './services/orders.service'
+import { CollapsibleWallComponent } from '../common/collapsible-wall/collapsible-wall.component'
 
 @NgModule({
     imports: [
         CommonModule,
         RouterModule.forChild(adminRoutes),
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        FileUploadModule
     ],
     declarations: [
         SidebarComponent,
@@ -38,11 +42,13 @@ import { OrdersComponent } from './orders/orders.component'
         MaterialsComponent,
         NewMaterialsComponent,
         EditMaterialsComponent,
-        OrdersComponent
+        OrdersComponent,
+        CollapsibleWallComponent
     ],
     providers: [
         ProducersService,
-        MaterialsService
+        MaterialsService,
+        OrdersService
     ]
 })
 

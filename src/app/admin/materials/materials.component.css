@@ -49,16 +49,27 @@ table tbody td:nth-child(9){
     font-size: 14px;
 }
 
+.photoImg{
+    position: relative;
+    text-align: center;
+}
+
+.photoImg img{
+    max-height: 100px;
+}
+
+.removePhoto:hover{
+    color: skyblue;
+}
 
 
 
-.image-upload > input
-{
+
+.image-upload > input{
     display: none;
 }
 
-.image-upload img
-{
+.image-upload img{
     width: 30px;
     cursor: pointer;
 }

@@ -43,7 +43,6 @@ export class MaterialsService{
             "name": name, "type": material, "width": width, "height": height,
             "code": code, "desc": desc, "depth": depth
         }
-        console.log(newMaterial);
         
         return this.http.post(environment.serverUrl + '/materials', newMaterial, options)
     }
@@ -59,9 +58,9 @@ export class MaterialsService{
         
         return this.http.delete(environment.serverUrl + '/materials/'+id, options)
     }
-/*
 
-     getMaterials(id: number){
+
+     getMaterial(id: number){
         let headers = new Headers({
             'Content-Type': 'application/json',
             'Accept': 'application/json',
@@ -72,9 +71,8 @@ export class MaterialsService{
         return this.http.get(environment.serverUrl + `/materials/${id}`, options);
     }
 
-    editMaterials(name: string, address :string, address1: string, city: string,
-                 state: string, country: string, email: string, phone: string,
-                 web: string, id: number){
+    editMaterial(name: string ,material: number, width: number, height: number, 
+        depth: number, code: string, desc: string, id: number){
         let headers = new Headers({
             'Content-Type': 'application/json',
             'Accept': 'application/json',
@@ -82,15 +80,26 @@ export class MaterialsService{
         })
 
         let options = new RequestOptions({headers: headers})
-        let editProducer = {
-            "name": name, "address": address, "address1": address1,
-            "city": city, "state": state, "country": country,
-            "email": email, "phone": phone, "web": web
+        let editMaterial = {
+            "name": name  ,"material": material, "width": width, 
+            "height": height, "depth": depth, "code": code, "desc": desc
         }
         
-        return this.http.put(environment.serverUrl + '/materials/'+id, editProducer, options)
+        return this.http.put(environment.serverUrl + '/materials/'+id, editMaterial, options)
     }
-*/
+
+    deleteMaterialPhoto(id: number){
+        let headers = new Headers({
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': 'Bearer ' + sessionStorage.getItem('adminToken')
+        })
+
+        let options = new RequestOptions({headers: headers})
+        
+        return this.http.delete(environment.serverUrl + '/materials-photo/'+id, options) 
+    }
+
 }
 
 export interface IMaterials {

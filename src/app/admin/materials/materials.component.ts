@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core'
 import { ActivatedRoute } from '@angular/router';
 import { MaterialsService, IMaterials } from '../services/materials.service';
 import { environment } from '../../../environments/environment';
-import { FileItem, FileUploader, FileSelectDirective } from "ng2-file-upload";
+import { FileItem, FileUploader } from "ng2-file-upload";
 
 @Component({
     templateUrl: './materials.component.html',
@@ -13,7 +13,8 @@ export class MaterialsComponent implements OnInit {
 
     materialsList: IMaterials
     uploadMaterialId :number
-	uploadPhotoTyple :string
+
+    env: string
 
     public uploader:FileUploader = new FileUploader({
 		allowedMimeType: ['image/png', 'image/jpeg'],
@@ -26,7 +27,7 @@ export class MaterialsComponent implements OnInit {
 	});
 
     constructor(private materialsService: MaterialsService,
-        private route: ActivatedRoute) { }
+        private route: ActivatedRoute) {this.env = "../../../assets/images/materials/"} 
 
     ngOnInit() {
         this.getAllMaterials()
@@ -39,14 +40,21 @@ export class MaterialsComponent implements OnInit {
         
         // Upload file to server instantly (when user selects it)
 		this.uploader.onAfterAddingFile = (item :FileItem) => {
-			item.url = environment.serverUrl + `/api/public-groups/upload-${this.uploadPhotoTyple}/${this.uploadMaterialId}`;
+            item.url = environment.serverUrl + `/materials-photo/${this.uploadMaterialId}`;
+            console.log(item.url);
+            
 			item.upload();
 			this.uploader = this.uploader;
         };
         
         // When file is uploaded to the server
-		this.uploader.onCompleteItem = (item: any, res: any, status: any, headers: any) => { () => this.getAllMaterials() };
+		this.uploader.onCompleteItem = (item: any, res: any, status: any, headers: any) => { () => this.getAllMaterials() }
 		this.uploader.onErrorItem = (e) => { this.uploader = this.uploader; }
+    }
+
+    removePhoto(id: number){
+		this.materialsService.deleteMaterialPhoto(id).subscribe( e => { this.getAllMaterials() })
+        
     }
 
     getAllMaterials() {
@@ -60,8 +68,7 @@ export class MaterialsComponent implements OnInit {
         
     }
 
-    setUploadId(groupId, photoType) { 
-		this.uploadMaterialId = groupId;
-		this.uploadPhotoTyple = photoType;
+    setUploadId(materialId) { 
+		this.uploadMaterialId = materialId;
 	}
 }

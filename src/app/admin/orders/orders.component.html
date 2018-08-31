@@ -1,3 +1,82 @@
 <div id="main">
     <h1>Orders</h1>
+
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">User</th>
+                <th scope="col">Date Created</th>
+                <th scope="col">Date In Progress</th>
+                <th scope="col">Date Finished</th>
+                <th scope="col">Delivery Date</th>
+                <th scope="col">Status</th>
+                <th scope="col">Payment</th>
+                <th scope="col">Price</th>
+                <th scope="col">Address</th>
+                <th scope="col">Address1</th>
+                <th scope="col">State</th>
+                <th scope="col">Country</th>
+                <th scope="col">Delivery Type</th>
+                <th scope="col">Supplied By User</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody *ngFor='let order of ordersList'>
+            <tr>
+                <th scope="row">{{ order.order_id }}</th>
+                <td>{{ order.user_id }}</td>
+                <td>{{ order.date_created }}</td>
+                <td>{{ order.date_in_progress }}</td>
+                <td>{{ order.date_finished }}</td>
+                <td>{{ order.date_delivery }}</td>
+                <td>{{ order.status_type }}</td>
+                <td>
+                    <div *ngIf='order.payment == 1' class='paind'>Paid</div>
+                    <div *ngIf='order.payment == 0' class='notPaid'>Not Paid</div>
+                </td>
+                <td>{{ order.price }}</td>
+                <td>{{ order.adress }}</td>
+                <td>{{ order.adress1 }}</td>
+                <td>{{ order.state }}</td>
+                <td>{{ order.countrie }}</td>
+                <td>{{ order.delivery_type }}</td>
+                <td>{{ order.supplied_by_users_id }}</td>
+                <td>
+                    <i class="far fa-edit" [routerLink]="['edit', order.order_id]"></i>
+                    <i class="far fa-trash-alt" (click)="deleteOrder(order.order_id)"></i>
+                </td>
+            </tr>
+            <tr class="moreTR">
+                <td colspan=16>
+                    <collapsible-wall [order_items_elements]="order.more.order_items_elements">
+                        <h4 class="title">Order Items</h4>
+                        <tr>
+                            <td>
+                                <table class="table2">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Material id</th>
+                                            <th>Quantity</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody *ngFor='let item of order.more.order_items'>
+                                        <tr>
+                                            <td>{{ item.id }}</td>
+                                            <td>{{ item.material_id }}</td>
+                                            <td>{{ item.quantity }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                    </collapsible-wall>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="float-right">
+        <a href="#" [routerLink]="['new']" routerLinkActive="active" class="btn"><button class="newOrder">Add New</button></a>
+    </div>
 </div>
