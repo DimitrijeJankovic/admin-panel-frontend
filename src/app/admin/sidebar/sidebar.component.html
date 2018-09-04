@@ -1,4 +1,4 @@
-<div class="sidenav">
+<div class="sidenav" *ngIf="sideBar.visible">
     <a href="#" [routerLink]="['/admin/producers']" routerLinkActive="active">Producers</a>
     <a href="#" [routerLink]="['/admin/materials']" routerLinkActive="active">Materials</a> 
     <a href="#" [routerLink]="['/admin/orders']" routerLinkActive="active">Orders</a>

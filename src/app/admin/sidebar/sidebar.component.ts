@@ -1,4 +1,5 @@
 import { Component } from '@angular/core'
+import { SidebarService } from '../services/sidebar.service'
 
 @Component({
     selector: 'sidebar',
@@ -7,5 +8,7 @@ import { Component } from '@angular/core'
 })
 
 export class SidebarComponent{
+
+    constructor( private sideBar: SidebarService ){}
 
 }

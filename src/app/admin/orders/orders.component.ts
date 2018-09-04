@@ -1,6 +1,7 @@
 import { Component } from '@angular/core'
 import { ActivatedRoute, Router } from '@angular/router';
 import { OrdersService, IOrder } from '../services/orders.service';
+import { SidebarService } from '../services/sidebar.service'
 
 @Component({
     templateUrl: './orders.component.html',
@@ -14,9 +15,11 @@ export class OrdersComponent{
 
     constructor(private ordersService: OrdersService,
                 private route: ActivatedRoute,
-                private router: Router) {} 
+                private router: Router,
+                private sideBar: SidebarService) {} 
 
     ngOnInit() {
+        this.sideBar.show()
         this.getAllOrders()
     }
 

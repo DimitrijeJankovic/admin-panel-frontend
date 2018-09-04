@@ -11,7 +11,7 @@ import { NewMaterialsComponent } from './materials/new-materials/new-materials.c
 import { EditMaterialsComponent } from './materials/edit-materials/edit-materials.component'
 
 import { OrdersComponent } from './orders/orders.component'
-
+import { NewOrderComponent } from './orders/new-order/new-order.component'
 
 
 
@@ -23,7 +23,8 @@ export const adminRoutes = [
         { path: 'materials', component: MaterialsComponent },
         { path: 'materials/new', component: NewMaterialsComponent },
         { path: 'materials/edit/:id', component: EditMaterialsComponent },
-        { path: 'orders', component: OrdersComponent }
+        { path: 'orders', component: OrdersComponent },
+        { path: 'orders/new', component: NewOrderComponent }
     ], canActivate: [AdminAuthtRouteActivator]},
     
     { path: 'login', component: AdminLoginComponent}
