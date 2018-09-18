@@ -19,6 +19,18 @@ export class OrdersService{
         return this.http.get(environment.serverUrl + '/orders', options);
     }
 
+    // for new order page, folder structure
+    getOrdersLeyaout(){
+        let headers = new Headers({
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': 'Bearer ' + sessionStorage.getItem('adminToken')
+        })
+        let options = new RequestOptions({headers: headers})
+        
+        return this.http.get(environment.serverUrl + '/orders-folder-leyaout', options);
+    }
+
 }
 
 export interface IOrder {
@@ -30,5 +42,6 @@ export interface IOrder {
     description: string,
     image_url: string,
     phone: string,
-    original_depth: number
+    original_depth: number,
+    order_items: any
 }

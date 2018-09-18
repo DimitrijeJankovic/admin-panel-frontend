@@ -21,6 +21,7 @@ import { EditMaterialsComponent } from './materials/edit-materials/edit-material
 
 import { OrdersComponent } from './orders/orders.component'
 import { NewOrderComponent } from './orders/new-order/new-order.component'
+import { OrderNewComponent } from './orders/new-order/new/order-new.component'
 
 import { CollapsibleWallComponent } from '../common/collapsible-wall/collapsible-wall.component'
 
@@ -52,6 +53,7 @@ import { OrderItemElementsService } from './services/order-item-elements.service
         EditMaterialsComponent,
         OrdersComponent,
         NewOrderComponent,
+        OrderNewComponent,
         CollapsibleWallComponent
     ],
     providers: [

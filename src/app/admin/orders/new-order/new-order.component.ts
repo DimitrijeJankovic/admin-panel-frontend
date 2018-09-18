@@ -11,6 +11,9 @@ import { OrdersService, IOrder } from '../../services/orders.service'
 export class NewOrderComponent implements OnInit{
 
     ordersList: IOrder
+    showOrder: boolean = false
+    showItem: boolean = false
+    showElement: boolean = false
 
     constructor(private sideBar: SidebarService,
                 private ordersService: OrdersService,
@@ -22,15 +25,18 @@ export class NewOrderComponent implements OnInit{
     }
 
     getAllOrders(){
-        this.ordersService.getAllOrders().subscribe((prod: any) => {
+        this.ordersService.getOrdersLeyaout().subscribe((prod: any) => {
             this.ordersList = JSON.parse(prod._body)
-            console.log(this.ordersList);
-            
         })
     }
 
-
     cancel(){
         this.router.navigate(['/admin/orders'])
+    }
+
+    newItem(item){
+        if(item === 'order'){ this.showOrder = true; }
+        else if(item == 'item'){ this.showItem = true }
+        else{ this.showElement = true }
     }
 }

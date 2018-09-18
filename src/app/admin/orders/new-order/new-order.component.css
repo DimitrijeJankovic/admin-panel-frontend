@@ -1,3 +1,7 @@
+#main{
+    padding-left: 250px;
+}
+
 .sidenav {
     height: 100%;
     width: 260px;
@@ -34,6 +38,7 @@
     color: skyblue;
     border: 1px solid skyblue;
     background-color: #3d4449;
+    padding-top: 10px;
 }
 
 .cBtn:hover{
@@ -67,6 +72,14 @@
     font-size: 23px;
 }
 
+.plus3{
+    size: 20px;
+    color: skyblue;
+    padding-left: 152px;
+    padding-top: 10px;
+    font-size: 23px; 
+}
+
 .orderItems{
     border: none;
     padding-right: 0px;
@@ -77,11 +90,28 @@
 .order-items{
     border: none;
     padding-right: 0px;
-    background-color: #363d42;
+    background-color: transparent;
     color: white;
     margin-bottom: 5px;
     margin-left: 20px;
     border-radius: 0px;
+    padding: 6px;
+    padding-left: 15px;
+    padding-right: 0px;
+}
+
+#item-element{
+    margin-top: -10px;
+    margin-bottom: -12px;
+}
+
+.item-elements{
+    border: none;
+    border-radius: 0px;
+    background-color: #363d42;
+    margin-left: 20px;
+    margin-top: 7px;
+    margin-bottom: -4px;
     padding: 6px;
     padding-left: 15px;
 }
@@ -89,5 +119,3 @@
 .order-items:hover{
     color: skyblue;
 }
-
-
