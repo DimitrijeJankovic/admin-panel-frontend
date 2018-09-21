@@ -5,6 +5,8 @@ import { appRoutes } from './routes';
 import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { FileUploadModule } from 'ng2-file-upload';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DatePipe } from '@angular/common';
 
 
 import { AppComponent } from './app.component';
@@ -32,13 +34,15 @@ declare let jQuery: Object;
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    FileUploadModule
+    FileUploadModule,
+    BrowserAnimationsModule
   ],
   providers: [
     AuthtRouteActivator,
     AdminAuthtRouteActivator,
     AuthService,
     AdminAuthService,
+    DatePipe,
     {
       provide: JQ_TOKEN, 
       useValue: jQuery

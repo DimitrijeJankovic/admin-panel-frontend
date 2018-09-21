@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common'
 import { RouterModule } from '@angular/router'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { FileUploadModule } from 'ng2-file-upload';
+import { MatButtonModule, MatSelectModule, MatInputModule, MatDatepickerModule, MatNativeDateModule } from '@angular/material';
 
 import { adminRoutes } from './admin.routes'
 
@@ -22,6 +23,8 @@ import { EditMaterialsComponent } from './materials/edit-materials/edit-material
 import { OrdersComponent } from './orders/orders.component'
 import { NewOrderComponent } from './orders/new-order/new-order.component'
 import { OrderNewComponent } from './orders/new-order/new/order-new.component'
+import { OrderItemsComponent } from './orders/order-items/order-items.component'
+import { OrderItemElementComponent } from './orders/order-item-element/order-item-element.component'
 
 import { CollapsibleWallComponent } from '../common/collapsible-wall/collapsible-wall.component'
 
@@ -39,7 +42,12 @@ import { OrderItemElementsService } from './services/order-item-elements.service
         RouterModule.forChild(adminRoutes),
         FormsModule,
         ReactiveFormsModule,
-        FileUploadModule
+        FileUploadModule,
+        MatButtonModule,
+        MatSelectModule,
+        MatInputModule,
+        MatDatepickerModule,
+        MatNativeDateModule
     ],
     declarations: [
         SidebarComponent,
@@ -54,7 +62,9 @@ import { OrderItemElementsService } from './services/order-item-elements.service
         OrdersComponent,
         NewOrderComponent,
         OrderNewComponent,
-        CollapsibleWallComponent
+        OrderItemsComponent,
+        OrderItemElementComponent,
+        CollapsibleWallComponent 
     ],
     providers: [
         ProducersService,

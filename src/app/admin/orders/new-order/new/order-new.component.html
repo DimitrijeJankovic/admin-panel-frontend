@@ -1,1 +1,120 @@
-<h1>New Order</h1>
+<div class="mainOrder">
+    <h1 id="title">Order {{ order.order_id }}</h1>
+    <div class="container-fluid">
+        <div class="row">
+            <div class=".col-6 col-lg-4">
+                <mat-form-field>
+                    <input matInput name="created" #created="ngModel" [matDatepicker]="dateCreated" [min]="minDate"
+                        date="true" [(ngModel)]="order.date_created" placeholder="Date Created">
+                    <mat-datepicker-toggle matSuffix [for]="dateCreated"></mat-datepicker-toggle>
+                    <mat-datepicker #dateCreated></mat-datepicker>
+                </mat-form-field>
+                <br>
+                <mat-form-field>
+                    <input matInput name="progress" #progress="ngModel" [matDatepicker]="dateInProgress" [min]="minDate"
+                        date="true" [(ngModel)]="order.date_in_progress" placeholder="Date In Progress">
+                    <mat-datepicker-toggle matSuffix [for]="dateInProgress"></mat-datepicker-toggle>
+                    <mat-datepicker #dateInProgress></mat-datepicker>
+                </mat-form-field>
+                <br>
+                <mat-form-field>
+                    <input matInput name="finished" #finished="ngModel" [matDatepicker]="dateFinished" [min]="minDate"
+                        date="true" [(ngModel)]="order.date_finished" placeholder="Date Finished">
+                    <mat-datepicker-toggle matSuffix [for]="dateFinished"></mat-datepicker-toggle>
+                    <mat-datepicker #dateFinished></mat-datepicker>
+                </mat-form-field>
+                <br>
+                <mat-form-field>
+                    <input matInput name="delivery" #delivery="ngModel" [matDatepicker]="dateDelivery" [min]="minDate"
+                        date="true" [(ngModel)]="order.date_delivery" placeholder="Date Delivery">
+                    <mat-datepicker-toggle matSuffix [for]="dateDelivery"></mat-datepicker-toggle>
+                    <mat-datepicker #dateDelivery></mat-datepicker>
+                </mat-form-field>
+                <br>
+                <mat-form-field>
+                    <mat-select [(ngModel)]="order.status_type" placeholder="Order status" [formControl]="selected"
+                        [errorStateMatcher]="matcher1">
+                        <mat-option>Clear</mat-option>
+                        <mat-option *ngFor="let statuse of statuses" value="{{ statuse.name }}">{{ statuse.name }}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="selected.hasError('required')">You must make a selection</mat-error>
+                </mat-form-field>
+                <br>
+                <mat-form-field>
+                    <mat-select [(ngModel)]="order.payment" placeholder="Payment" [formControl]="selected3"
+                        [errorStateMatcher]="matcher3">
+                        <mat-option>Clear</mat-option>
+                        <mat-option value="0">Not Paid</mat-option>
+                        <mat-option value="1">Paid</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="selected3.hasError('required')">You must make a selection</mat-error>
+                </mat-form-field>
+                <br>
+                <mat-form-field>
+                    <input [(ngModel)]="order.price" matInput name='price' type='number' step="0.1" min="0" placeholder='Price'>
+                </mat-form-field>
+            </div>
+            <div class=".col-6 col-lg-5">
+
+                <mat-form-field>
+                    <input [(ngModel)]="order.delivery_price" matInput name='delivery_price' type='number' step="0.1"
+                        min="0" placeholder='Delivery Price'>
+                </mat-form-field>
+                <br>
+                <mat-form-field class="example-full-width">
+                    <input [(ngModel)]="order.adress" matInput placeholder="Address" [formControl]="addressFormControl"
+                        [errorStateMatcher]="address">
+                    <mat-error *ngIf="addressFormControl.hasError('required')">
+                        Address is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+                <br>
+                <mat-form-field>
+                    <input [(ngModel)]="order.adress1" matInput name='adress1' type='text' placeholder='Secondary Address'>
+                </mat-form-field>
+                <br>
+                <mat-form-field class="example-full-width">
+                    <input [(ngModel)]="order.state" matInput placeholder="State" [formControl]="stateFormControl"
+                        [errorStateMatcher]="state">
+                    <mat-error *ngIf="stateFormControl.hasError('required')">
+                        State is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+                <br>
+
+                <mat-form-field>
+                    <mat-select [(ngModel)]="order.countrie" placeholder="Countrie" [formControl]="selected2"
+                        [errorStateMatcher]="matcher1">
+                        <mat-option>Clear</mat-option>
+                        <mat-option *ngFor="let countrie of countries" value="{{ countrie.name }}">{{ countrie.name }}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="selected2.hasError('required')">You must make a selection</mat-error>
+                </mat-form-field>
+                <br>
+
+                <mat-form-field>
+                    <mat-select [(ngModel)]="order.delivery_type" placeholder="Delivery Type" [formControl]="selected4"
+                        [errorStateMatcher]="matcher4">
+                        <mat-option>Clear</mat-option>
+                        <mat-option *ngFor="let deliveryType of deliveryTypes" value="{{ deliveryType.name }}">{{
+                            deliveryType.name }}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="selected4.hasError('required')">You must make a selection</mat-error>
+                </mat-form-field>
+                <br>
+               <!--
+                <mat-form-field>
+                    <input matInput name="requested" #requested="ngModel" [matDatepicker]="requestedDate" [min]="minDate"
+                        date="true" [(ngModel)]="order.requested_date" placeholder="Requested Date">
+                    <mat-datepicker-toggle matSuffix [for]="requestedDate"></mat-datepicker-toggle>
+                    <mat-datepicker #requestedDate></mat-datepicker>
+                </mat-form-field>
+                <br>
+                -->
+                <button (click)="saveOrder()" type="button" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+        <div *ngIf="fail" class="alert alert-danger">Problem!</div>
+        <div *ngIf="success" class="alert alert-success">Success!</div>
+    </div>
+</div>

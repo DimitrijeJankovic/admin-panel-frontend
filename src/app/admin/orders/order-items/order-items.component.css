@@ -1,0 +1,28 @@
+.orderItem{
+    padding-left: 20px;
+    padding-top: 15px;
+}
+
+#title{
+    font-size: 35px;
+}
+
+.orderItem h5 {
+    color: gray;
+    margin-top: -11px;
+    margin-left: 2px;
+}
+
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 180px;
+}
+  
+.example-full-width {
+    width: 180px;
+}
+
+.container-fluid{
+    padding-top: 30px;
+}

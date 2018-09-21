@@ -11,9 +11,12 @@ import { OrdersService, IOrder } from '../../services/orders.service'
 export class NewOrderComponent implements OnInit{
 
     ordersList: IOrder
+
     showOrder: boolean = false
     showItem: boolean = false
     showElement: boolean = false
+
+    value:any
 
     constructor(private sideBar: SidebarService,
                 private ordersService: OrdersService,
@@ -34,9 +37,27 @@ export class NewOrderComponent implements OnInit{
         this.router.navigate(['/admin/orders'])
     }
 
-    newItem(item){
-        if(item === 'order'){ this.showOrder = true; }
-        else if(item == 'item'){ this.showItem = true }
-        else{ this.showElement = true }
+    newItem(item: string, value){
+        if(item === 'order'){
+            this.showOrder = true 
+            this.showItem = false 
+            this.showElement = false 
+
+            this.value = value
+        }
+        else if(item == 'item'){ 
+            this.showItem = true 
+            this.showOrder = false 
+            this.showElement = false
+            
+            this.value = value
+        }
+        else{ 
+            this.showElement = true 
+            this.showItem = false 
+            this.showOrder = false
+            
+            this.value = value
+        }
     }
 }

@@ -19,6 +19,24 @@ export class OrderItemsService{
         return this.http.get(environment.serverUrl + '/order-items', options);
     }
 
+    orderItem(orderItem: any){
+        let headers = new Headers({
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': 'Bearer ' + sessionStorage.getItem('adminToken')
+        })
+        
+        let options = new RequestOptions({headers: headers})
+        let newOrderItem = {
+            "id": orderItem.id,
+            "material_id": orderItem.material_id,
+            "order_id": orderItem.order_id,
+            "quantity": orderItem.quantity
+        }
+
+        return this.http.post(environment.serverUrl + '/order-items', newOrderItem, options)
+    }
+
 }
 
 export interface IOrderItem {

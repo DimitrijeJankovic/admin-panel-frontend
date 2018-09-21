@@ -38,7 +38,7 @@
     color: skyblue;
     border: 1px solid skyblue;
     background-color: #3d4449;
-    padding-top: 10px;
+    padding-top: 9px;
 }
 
 .cBtn:hover{
@@ -110,10 +110,11 @@
     border-radius: 0px;
     background-color: #363d42;
     margin-left: 20px;
-    margin-top: 7px;
-    margin-bottom: -4px;
+    margin-top: -4px;
+    margin-bottom: 7px;
     padding: 6px;
     padding-left: 15px;
+    color: white;
 }
 
 .order-items:hover{

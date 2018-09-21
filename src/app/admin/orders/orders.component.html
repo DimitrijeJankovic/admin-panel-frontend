@@ -26,10 +26,10 @@
             <tr>
                 <th scope="row">{{ order.order_id }}</th>
                 <td>{{ order.user_id }}</td>
-                <td>{{ order.date_created }}</td>
-                <td>{{ order.date_in_progress }}</td>
-                <td>{{ order.date_finished }}</td>
-                <td>{{ order.date_delivery }}</td>
+                <td>{{ order.date_created | date }}</td>
+                <td>{{ order.date_in_progress | date }}</td>
+                <td>{{ order.date_finished | date }}</td>
+                <td>{{ order.date_delivery | date }}</td>
                 <td>{{ order.status_type }}</td>
                 <td>
                     <div *ngIf='order.payment == 1' class='paind'>Paid</div>
@@ -57,11 +57,11 @@
                                     <thead class="thead-light">
                                         <tr>
                                             <th>ID</th>
-                                            <th>Material id</th>
+                                            <th>Material ID</th>
                                             <th>Quantity</th>
                                         </tr>
                                     </thead>
-                                    <tbody *ngFor='let item of order.more.order_items'>
+                                    <tbody class="newColor" *ngFor='let item of order.more.order_items'>
                                         <tr>
                                             <td>{{ item.id }}</td>
                                             <td>{{ item.material_id }}</td>
