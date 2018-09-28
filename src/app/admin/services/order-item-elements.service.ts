@@ -19,6 +19,16 @@ export class OrderItemElementsService{
         return this.http.get(environment.serverUrl + '/order-item-elements', options);
     }
 
+    getOrderItemElement(id: number){
+        let headers = new Headers({
+            'Accept': 'application/json',
+            'Authorization': 'Bearer ' + sessionStorage.getItem('adminToken')
+        })
+        let options = new RequestOptions({headers: headers})
+        
+        return this.http.get(environment.serverUrl + `/order-item-elements/${id}`, options);
+    }
+
     itemElement(itemElement: any){
         let headers = new Headers({
             'Content-Type': 'application/json',

@@ -47,10 +47,6 @@
     background-color: skyblue;
 }
 
-.panel-title{
-    background-color: #363d42;
-}
-
 .panel-title a:hover{
     color: skyblue;
 }
@@ -62,6 +58,7 @@
     padding-left: 207px;
     padding-bottom: 10px;
     font-size: 23px;
+    cursor: pointer;
 }
 
 .plus2{
@@ -70,14 +67,7 @@
     padding-left: 187px;
     padding-bottom: 10px;
     font-size: 23px;
-}
-
-.plus3{
-    size: 20px;
-    color: skyblue;
-    padding-left: 152px;
-    padding-top: 10px;
-    font-size: 23px; 
+    cursor: pointer;
 }
 
 .orderItems{
@@ -92,17 +82,12 @@
     padding-right: 0px;
     background-color: transparent;
     color: white;
-    margin-bottom: 5px;
+    margin-top: 15px;
     margin-left: 20px;
     border-radius: 0px;
     padding: 6px;
     padding-left: 15px;
     padding-right: 0px;
-}
-
-#item-element{
-    margin-top: -10px;
-    margin-bottom: -12px;
 }
 
 .item-elements{
@@ -119,4 +104,43 @@
 
 .order-items:hover{
     color: skyblue;
+}
+
+.item-elements:hover{
+    color: skyblue;
+    cursor: pointer;
+}
+
+.panel-heading{
+    background-color: #363d42;
+    margin-bottom: 5px;
+    color: white;
+}
+
+#element1 {
+    display:inline-block;
+    padding-top: 7px;
+    color: skyblue
+} 
+
+#element2[_ngcontent-c3] {
+    display: inline-block;
+    font-size: 18px;
+    width: 85%;
+}
+
+#element2 {
+    display:inline-block; 
+    cursor: pointer;
+    font-size: 18px;
+    width: 85%;
+} 
+
+#element2:hover{
+    color: skyblue;
+}
+
+#element2:focus{
+    color: skyblue;
+    outline: none;
 }

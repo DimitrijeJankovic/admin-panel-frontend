@@ -9,6 +9,6 @@ export const appRoutes:Routes = [
     { path: 'admin', loadChildren: () => AdminModule },
     { path: '', redirectTo: '/admin/login', pathMatch: 'full' },
     { path: '404', component: Error404Component },
-    {path: '**', redirectTo: '/404'}
+    { path: '**', redirectTo: '/404'}
 
 ]

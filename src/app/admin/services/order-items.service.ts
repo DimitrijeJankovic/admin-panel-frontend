@@ -19,7 +19,34 @@ export class OrderItemsService{
         return this.http.get(environment.serverUrl + '/order-items', options);
     }
 
-    orderItem(orderItem: any){
+    getOrder(id: number){
+        let headers = new Headers({
+            'Accept': 'application/json',
+            'Authorization': 'Bearer ' + sessionStorage.getItem('adminToken')
+        })
+        let options = new RequestOptions({headers: headers})
+        
+        return this.http.get(environment.serverUrl + `/order-items/${id}`, options);
+    }
+
+    editItem(orderItem: any, id:number){
+        let headers = new Headers({
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': 'Bearer ' + sessionStorage.getItem('adminToken')
+        })
+        
+        let options = new RequestOptions({headers: headers})
+        let editOrderItem = {
+            "material_id": orderItem.material_id,
+            "order_id": orderItem.order_id,
+            "quantity": orderItem.quantity
+        }
+
+        return this.http.put(environment.serverUrl + `/order-items/${id}`, editOrderItem, options)
+    }
+
+    newItem(orderItem: any){
         let headers = new Headers({
             'Content-Type': 'application/json',
             'Accept': 'application/json',
@@ -28,11 +55,13 @@ export class OrderItemsService{
         
         let options = new RequestOptions({headers: headers})
         let newOrderItem = {
-            "id": orderItem.id,
             "material_id": orderItem.material_id,
             "order_id": orderItem.order_id,
             "quantity": orderItem.quantity
         }
+
+        console.log(newOrderItem);
+        
 
         return this.http.post(environment.serverUrl + '/order-items', newOrderItem, options)
     }

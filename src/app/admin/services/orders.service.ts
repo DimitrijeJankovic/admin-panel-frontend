@@ -60,8 +60,35 @@ export class OrdersService{
         return this.http.get(environment.serverUrl + '/delivery-type', options);
     }
 
-    // for creating new and edit existing
-    order(order: any){
+    editOrder(order: any, id: number){
+        let headers = new Headers({
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': 'Bearer ' + sessionStorage.getItem('adminToken')
+        })
+        
+        let options = new RequestOptions({headers: headers})
+        let editOrder = {
+            "adress": order.adress,
+            "adress1": order.adress1,
+            "country": order.country,
+            "date_created": order.date_created,
+            "date_delivery": order.date_delivery,
+            "date_finished": order.date_finished,
+            "date_in_progress": order.date_in_progress,
+            "delivery_type_id": order.delivery_type_id,
+            "payment": order.payment,
+            "price": order.price,
+            "state": order.state,
+            "status_id": order.status_id,
+            "supplied_by_users_id": order.supplied_by_users_id
+        }
+        
+        return this.http.put(environment.serverUrl + `/orders/${id}`, editOrder, options)
+    }
+
+
+    newOrder(order: any){
         let headers = new Headers({
             'Content-Type': 'application/json',
             'Accept': 'application/json',
@@ -72,20 +99,19 @@ export class OrdersService{
         let newOrder = {
             "adress": order.adress,
             "adress1": order.adress1,
-            "countrie": order.countrie,
+            "country": order.country,
             "date_created": order.date_created,
             "date_delivery": order.date_delivery,
             "date_finished": order.date_finished,
             "date_in_progress": order.date_in_progress,
-            "delivery_type": order.delivery_type,
-            "order_id": order.order_id,
+            "delivery_type_id": order.delivery_type_id,
             "payment": order.payment,
             "price": order.price,
             "state": order.state,
-            "status_type": order.status_type,
+            "status_id": order.status_id,
             "supplied_by_users_id": order.supplied_by_users_id
         }
-
+        
         return this.http.post(environment.serverUrl + '/orders', newOrder, options)
     }
 

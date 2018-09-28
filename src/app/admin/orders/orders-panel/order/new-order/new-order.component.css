@@ -1,0 +1,22 @@
+.mainOrder{
+    padding-left: 20px;
+    padding-top: 15px;
+}
+
+#title{
+    font-size: 35px;
+}
+
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 50%;
+}
+  
+.example-full-width {
+    width: 50%;
+}
+
+.cancel{
+    margin-left: 5px;
+}

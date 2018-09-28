@@ -1,5 +1,5 @@
-<div class="mainOrder">
-    <h1 id="title">Order {{ order.order_id }}</h1>
+<div *ngIf="load" class="mainOrder">
+    <h1 id="title">Order {{ order.id }}</h1> 
     <div class="container-fluid">
         <div class="row">
             <div class=".col-6 col-lg-4">
@@ -32,10 +32,10 @@
                 </mat-form-field>
                 <br>
                 <mat-form-field>
-                    <mat-select [(ngModel)]="order.status_type" placeholder="Order status" [formControl]="selected"
+                    <mat-select [(ngModel)]="order.status_id" placeholder="Order status" [formControl]="selected"
                         [errorStateMatcher]="matcher1">
                         <mat-option>Clear</mat-option>
-                        <mat-option *ngFor="let statuse of statuses" value="{{ statuse.name }}">{{ statuse.name }}</mat-option>
+                        <mat-option *ngFor="let statuse of statuses" value="{{ statuse.id }}">{{ statuse.name }}</mat-option>
                     </mat-select>
                     <mat-error *ngIf="selected.hasError('required')">You must make a selection</mat-error>
                 </mat-form-field>
@@ -50,12 +50,12 @@
                     <mat-error *ngIf="selected3.hasError('required')">You must make a selection</mat-error>
                 </mat-form-field>
                 <br>
+                
                 <mat-form-field>
                     <input [(ngModel)]="order.price" matInput name='price' type='number' step="0.1" min="0" placeholder='Price'>
                 </mat-form-field>
             </div>
             <div class=".col-6 col-lg-5">
-
                 <mat-form-field>
                     <input [(ngModel)]="order.delivery_price" matInput name='delivery_price' type='number' step="0.1"
                         min="0" placeholder='Delivery Price'>
@@ -83,26 +83,26 @@
                 <br>
 
                 <mat-form-field>
-                    <mat-select [(ngModel)]="order.countrie" placeholder="Countrie" [formControl]="selected2"
+                    <mat-select [(ngModel)]="order.country" placeholder="Countrie" [formControl]="selected2"
                         [errorStateMatcher]="matcher1">
                         <mat-option>Clear</mat-option>
-                        <mat-option *ngFor="let countrie of countries" value="{{ countrie.name }}">{{ countrie.name }}</mat-option>
+                        <mat-option *ngFor="let countrie of countries" value="{{ countrie.id }}">{{ countrie.name }}</mat-option>
                     </mat-select>
                     <mat-error *ngIf="selected2.hasError('required')">You must make a selection</mat-error>
                 </mat-form-field>
                 <br>
 
                 <mat-form-field>
-                    <mat-select [(ngModel)]="order.delivery_type" placeholder="Delivery Type" [formControl]="selected4"
+                    <mat-select [(ngModel)]="order.delivery_type_id" placeholder="Delivery Type" [formControl]="selected4"
                         [errorStateMatcher]="matcher4">
                         <mat-option>Clear</mat-option>
-                        <mat-option *ngFor="let deliveryType of deliveryTypes" value="{{ deliveryType.name }}">{{
+                        <mat-option *ngFor="let deliveryType of deliveryTypes" value="{{ deliveryType.id }}">{{
                             deliveryType.name }}</mat-option>
                     </mat-select>
                     <mat-error *ngIf="selected4.hasError('required')">You must make a selection</mat-error>
                 </mat-form-field>
                 <br>
-               <!--
+                <!--
                 <mat-form-field>
                     <input matInput name="requested" #requested="ngModel" [matDatepicker]="requestedDate" [min]="minDate"
                         date="true" [(ngModel)]="order.requested_date" placeholder="Requested Date">

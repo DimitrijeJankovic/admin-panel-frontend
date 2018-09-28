@@ -11,12 +11,11 @@ import { NewMaterialsComponent } from './materials/new-materials/new-materials.c
 import { EditMaterialsComponent } from './materials/edit-materials/edit-materials.component'
 
 import { OrdersComponent } from './orders/orders.component'
-import { NewOrderComponent } from './orders/new-order/new-order.component'
-import { OrderNewComponent } from './orders/new-order/new/order-new.component'
+import { OrdersPanelModule } from './orders/orders-panel/orders-panel.module'
 
 
 export const adminRoutes = [
-    { path: '', component: AdminComponent,children: [
+    { path: '', component: AdminComponent,children: [        
         { path: 'producers', component: ProducersComponent },
         { path: 'producers/new', component: NewProducersComponent },
         { path: 'producers/edit/:id', component: EditProducersComponent },
@@ -24,8 +23,7 @@ export const adminRoutes = [
         { path: 'materials/new', component: NewMaterialsComponent },
         { path: 'materials/edit/:id', component: EditMaterialsComponent },
         { path: 'orders', component: OrdersComponent },
-        { path: 'orders/new', component: NewOrderComponent },
-        { path: 'orders/new/order', component: OrderNewComponent }
+        { path: 'orders/panel', loadChildren: () => OrdersPanelModule },
     ], canActivate: [AdminAuthtRouteActivator]},
     
     { path: 'login', component: AdminLoginComponent}

@@ -20,13 +20,8 @@ import { MaterialsComponent } from './materials/materials.component'
 import { NewMaterialsComponent } from './materials/new-materials/new-materials.component'
 import { EditMaterialsComponent } from './materials/edit-materials/edit-materials.component'
 
-import { OrdersComponent } from './orders/orders.component'
-import { NewOrderComponent } from './orders/new-order/new-order.component'
-import { OrderNewComponent } from './orders/new-order/new/order-new.component'
-import { OrderItemsComponent } from './orders/order-items/order-items.component'
-import { OrderItemElementComponent } from './orders/order-item-element/order-item-element.component'
-
-import { CollapsibleWallComponent } from '../common/collapsible-wall/collapsible-wall.component'
+import { CollapsibleWallComponent } from './orders/collapsible-wall/collapsible-wall.component'
+import { OrdersComponent } from './orders/orders.component';
 
 // services
 import { ProducersService } from './services/producers.service'
@@ -59,12 +54,8 @@ import { OrderItemElementsService } from './services/order-item-elements.service
         MaterialsComponent,
         NewMaterialsComponent,
         EditMaterialsComponent,
-        OrdersComponent,
-        NewOrderComponent,
-        OrderNewComponent,
-        OrderItemsComponent,
-        OrderItemElementComponent,
-        CollapsibleWallComponent 
+        CollapsibleWallComponent,
+        OrdersComponent
     ],
     providers: [
         ProducersService,
