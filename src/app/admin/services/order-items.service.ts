@@ -60,9 +60,6 @@ export class OrderItemsService{
             "quantity": orderItem.quantity
         }
 
-        console.log(newOrderItem);
-        
-
         return this.http.post(environment.serverUrl + '/order-items', newOrderItem, options)
     }
 

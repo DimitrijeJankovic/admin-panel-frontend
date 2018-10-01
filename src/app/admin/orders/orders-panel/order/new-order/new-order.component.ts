@@ -82,8 +82,14 @@ export class NewOrderComponent{
     }
 
     cancelOrder(){
-        this.router.navigate(['admin/orders/panel'])
-        this.panel.ordersList.pop()
+        var lastOrder = this.panel.ordersList[this.panel.ordersList.length - 1] 
+        if(lastOrder.order_id == "New"){
+            this.panel.ordersList.pop()
+            this.router.navigate(['admin/orders/panel'])
+        }else{
+            this.router.navigate(['admin/orders/panel'])
+        }
+        
     }
 
     getAllStatusTypes() {

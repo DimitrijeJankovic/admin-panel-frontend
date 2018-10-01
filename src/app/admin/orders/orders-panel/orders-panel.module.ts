@@ -14,6 +14,7 @@ import { NewOrderComponent } from './order/new-order/new-order.component'
 import { IitemComponent } from './item/item.component'
 import { NewItemComponent } from './item/new-item/new-item.component'
 import { ElementComponent } from  './element/element.component'
+import { NewElementComponent } from './element/new-element/new-element.component'
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { ElementComponent } from  './element/element.component'
         NewOrderComponent,
         IitemComponent,
         NewItemComponent,
-        ElementComponent
+        ElementComponent,
+        NewElementComponent
     ],
     providers: [
     ]

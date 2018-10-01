@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core'
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
-import { OrderItemElementsService } from '../../../services/order-item-elements.service'
+import { OrderItemElementsService } from '../../../../services/order-item-elements.service'
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -13,16 +13,18 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 }
 
 @Component({
-    templateUrl: './element.component.html',
-    styleUrls: ['./element.component.css']
+    templateUrl: './new-element.component.html',
+    styleUrls: ['./new-element.component.css']
 })
 
-export class ElementComponent implements OnInit{
+export class NewElementComponent{
 
-    sub: any
-    element: any
+    element: any = {
+        width: null,
+        height: null,
+        order_items_id: null
+    }
 
-    load: boolean = false
     problem: boolean = false
     fail: boolean = false
     success: boolean = false
@@ -32,33 +34,12 @@ export class ElementComponent implements OnInit{
         private route : ActivatedRoute,
         private orderItemElementsService: OrderItemElementsService,
     ){
-        setTimeout(() => {
-            this.load = true
-        }, 200)
-    }
-
-    ngOnInit(): void {
-        this.changeMeOnUpdate()
-    }
-
-    changeMeOnUpdate(){
-        this.sub = this.route.params.subscribe(params => {
-            var id = params.id
-                
-            this.orderItemElementsService.getOrderItemElement(id).subscribe((data: any) => {
-                if(!data){
-                    this.problem = true
-                }else{
-                    this.element = JSON.parse(data._body)[0]
-                }
-            },(error) => {
-                this.problem = true
-            })
-        })
+        // get order id from url
+        this.element.order_items_id = this.route.snapshot.queryParams['iID']
     }
 
     saveElement(){
-        this.orderItemElementsService.editItemElement(this.element, this.element.id).subscribe((data: any) => {
+        this.orderItemElementsService.newItemElement(this.element).subscribe((data: any) => {
             if(!data){
               this.fail = true
             }else{
@@ -82,6 +63,4 @@ export class ElementComponent implements OnInit{
         Validators.required,
     ]);
     height = new MyErrorStateMatcher();
-    
-
 }

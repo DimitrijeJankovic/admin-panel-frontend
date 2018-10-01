@@ -29,7 +29,7 @@ export class OrderItemElementsService{
         return this.http.get(environment.serverUrl + `/order-item-elements/${id}`, options);
     }
 
-    itemElement(itemElement: any){
+    editItemElement(itemElement: any, id:number){
         let headers = new Headers({
             'Content-Type': 'application/json',
             'Accept': 'application/json',
@@ -38,12 +38,28 @@ export class OrderItemElementsService{
         
         let options = new RequestOptions({headers: headers})
         let newItemElement = {
-            "id": itemElement.id,
             "order_items_id": itemElement.order_items_id,
             "width": itemElement.width,
             "height": itemElement.height
         }
 
+        return this.http.put(environment.serverUrl + `/order-item-elements/${id}`, newItemElement, options)
+    }
+
+    newItemElement(itemElement: any){
+        let headers = new Headers({
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': 'Bearer ' + sessionStorage.getItem('adminToken')
+        })
+        
+        let options = new RequestOptions({headers: headers})
+        let newItemElement = {
+            "order_items_id": itemElement.order_items_id,
+            "width": itemElement.width,
+            "height": itemElement.height
+        }
+        
         return this.http.post(environment.serverUrl + '/order-item-elements', newItemElement, options)
     }
 

@@ -12,6 +12,7 @@ export class OrdersPanelComponent implements OnInit{
 
     ordersList: any
 
+
     showOrder: boolean = false
     showItem: boolean = false
     showElement: boolean = false
@@ -50,10 +51,10 @@ export class OrdersPanelComponent implements OnInit{
         }
     }
 
-    newOrderItem(id: number, orderID: number){
-        var items = this.ordersList[id].order_items
+    newOrderItem(key: number, orderID: number){
+        var items = this.ordersList[key].order_items
         var item = { "id": 'new' }
-
+        
         if(items.length != 0){
             var lastItem = items[items.length - 1]
 
@@ -65,6 +66,24 @@ export class OrdersPanelComponent implements OnInit{
             items.push(item)
             this.router.navigate(['/admin/orders/panel/item/new'], { queryParams: { oID: orderID } })
         }
+    }
+
+    newItemElement(orderKey: number, itemKey: number, orderItemId: number){
+        var elements = this.ordersList[orderKey].order_items[itemKey].item_elements
+        var element = { "id": "new"}
+
+        if(elements.length != 0){
+            var lastItem = elements[elements.length - 1]
+
+            if(lastItem.id != element.id){
+                elements.push(element)
+                this.router.navigate(['/admin/orders/panel/element/new'], { queryParams: { iID: orderItemId } })
+            }
+        }else{
+            elements.push(element)
+            this.router.navigate(['/admin/orders/panel/element/new'], { queryParams: { iID: orderItemId } })
+        }
+                
     }
 
     cancel(){

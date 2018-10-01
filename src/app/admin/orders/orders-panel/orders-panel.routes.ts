@@ -4,7 +4,7 @@ import { NewOrderComponent } from './order/new-order/new-order.component'
 import { IitemComponent } from './item/item.component'
 import { NewItemComponent } from './item/new-item/new-item.component'
 import { ElementComponent } from './element/element.component'
-
+import { NewElementComponent } from './element/new-element/new-element.component'
 
 export const adminPanelRoutes = [
     { path: '', component: OrdersPanelComponent,children: [
@@ -12,6 +12,7 @@ export const adminPanelRoutes = [
         { path: 'order/:id', component: OrderComponent },
         { path: 'item/new', component: NewItemComponent },
         { path: 'item/:id', component: IitemComponent },
+        { path: 'element/new', component: NewElementComponent },
         { path: 'element/:id', component: ElementComponent }        
     ]}
 ] 

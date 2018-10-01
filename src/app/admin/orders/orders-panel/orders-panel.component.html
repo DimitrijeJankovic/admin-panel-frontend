@@ -13,7 +13,7 @@
                     <div id="orders{{order.order_id}}" class="collapse">
                         <ul class="list-group">
                             <li class="list-group-item orderItems">
-                                <div *ngFor='let order_item of order.order_items; last as lastOrderItem'>
+                                <div *ngFor='let order_item of order.order_items; let j = index; last as lastOrderItem'>
                                     <div class="panel-group">
                                         <div class="panel panel-default">
                                             <div class="panel-heading">
@@ -24,22 +24,23 @@
                                                 </h4>
                                             </div>
                                             <div id="order-items{{order_item.id}}" class="collapse">
-                                                <ul class="list-group" *ngFor='let item_element of order_item.item_elements'>
+                                                <ul class="list-group" *ngFor='let item_element of order_item.item_elements;'>
                                                     <li id="element2" [routerLink]="['element', item_element.id]" class="list-group-item item-elements">Element
-                                                        {{ item_element.id }} </li>
+                                                        {{ item_element.id }}</li>
                                                 </ul>
-                                                <div class="plus2">
-                                                    <i class="fas fa-plus-square"></i>
+                                                <div class="plus2" (click)="newItemElement(i, j, order_item.id)">
+                                                    <i class="fas fa-plus-square" title="New Item Element"></i>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div *ngIf="lastOrderItem" (click)="newOrderItem(i, order.order_id)" class="plus2">
-                                        <i class="fas fa-plus-square"></i>
+                                        <i class="fas fa-plus-square" title="New Order Item"></i>
                                     </div>
                                 </div>
-                                <div *ngIf="order.order_items.length == 0" (click)="newOrderItem(i)" class="plus2">
-                                    <i class="fas fa-plus-square"></i>
+                                <div *ngIf="(order.order_items | json) == ([] | json)" (click)="newOrderItem(i, order.order_id)"
+                                    class="plus2">
+                                    <i class="fas fa-plus-square" title="New Order Item"></i>
                                 </div>
                             </li>
                         </ul>
@@ -48,7 +49,7 @@
             </div>
         </div>
         <div (click)="newOrder()" class="plus">
-            <i class="fas fa-plus-square"></i>
+            <i class="fas fa-plus-square" title="New Order"></i>
         </div>
     </div>
 </div>

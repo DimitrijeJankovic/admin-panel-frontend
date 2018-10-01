@@ -69,7 +69,7 @@ export class NewItemComponent{
         
     }
 
-
+    
     selected = new FormControl(this.materials, [
         Validators.required,
         Validators.pattern(this.materials),
