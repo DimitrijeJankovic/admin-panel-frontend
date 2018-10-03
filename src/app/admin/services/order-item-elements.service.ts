@@ -40,7 +40,8 @@ export class OrderItemElementsService{
         let newItemElement = {
             "order_items_id": itemElement.order_items_id,
             "width": itemElement.width,
-            "height": itemElement.height
+            "height": itemElement.height,
+            "direction": itemElement.direction
         }
 
         return this.http.put(environment.serverUrl + `/order-item-elements/${id}`, newItemElement, options)
@@ -57,7 +58,8 @@ export class OrderItemElementsService{
         let newItemElement = {
             "order_items_id": itemElement.order_items_id,
             "width": itemElement.width,
-            "height": itemElement.height
+            "height": itemElement.height,
+            "direction": itemElement.direction
         }
         
         return this.http.post(environment.serverUrl + '/order-item-elements', newItemElement, options)

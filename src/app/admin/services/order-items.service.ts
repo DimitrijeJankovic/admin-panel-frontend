@@ -59,8 +59,20 @@ export class OrderItemsService{
             "order_id": orderItem.order_id,
             "quantity": orderItem.quantity
         }
-
+        console.log(newOrderItem);
+        
         return this.http.post(environment.serverUrl + '/order-items', newOrderItem, options)
+    }
+
+    deleteItemPhoto(id: number){
+        let headers = new Headers({
+            'Accept': 'application/json',
+            'Authorization': 'Bearer ' + sessionStorage.getItem('adminToken')
+        })
+
+        let options = new RequestOptions({headers: headers})
+        
+        return this.http.delete(environment.serverUrl + `/order-item-photo/${id}`, options); 
     }
 
 }

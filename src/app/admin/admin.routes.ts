@@ -26,6 +26,6 @@ export const adminRoutes = [
         { path: 'orders/panel', loadChildren: () => OrdersPanelModule },
     ], canActivate: [AdminAuthtRouteActivator]},
     
-    { path: 'login', component: AdminLoginComponent}
+    { path: 'login', component: AdminLoginComponent }
     
 ]

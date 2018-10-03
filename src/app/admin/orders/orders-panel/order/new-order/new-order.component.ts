@@ -28,6 +28,7 @@ export class NewOrderComponent{
         date_delivery: null,
         date_finished: null,
         date_in_progress: null,
+        requested_date: null,
         status_id: null,
         payment: null,
         price: null,
@@ -65,7 +66,7 @@ export class NewOrderComponent{
         this.order.date_in_progress = (this.order.date_in_progress)? this.datePipe.transform(this.order.date_in_progress, 'y-MM-dd H:m:s') : null
         this.order.date_finished = (this.order.date_finished)? this.datePipe.transform(this.order.date_finished, 'y-MM-dd H:m:s') : null
         this.order.date_delivery = (this.order.date_delivery)? this.datePipe.transform(this.order.date_delivery, 'y-MM-dd H:m:s') : null
-        //this.order.requested_date = (this.order.requested_date)? this.datePipe.transform(this.order.requested_date, 'y-MM-dd H:m:s') : null
+        this.order.requested_date = (this.order.requested_date)? this.datePipe.transform(this.order.requested_date, 'y-MM-dd H:m:s') : null
 
         this.ordersService.newOrder(this.order).subscribe((data: any) => {
             if(!data){
@@ -83,7 +84,7 @@ export class NewOrderComponent{
 
     cancelOrder(){
         var lastOrder = this.panel.ordersList[this.panel.ordersList.length - 1] 
-        if(lastOrder.order_id == "New"){
+        if(lastOrder.order_id == "new"){
             this.panel.ordersList.pop()
             this.router.navigate(['admin/orders/panel'])
         }else{

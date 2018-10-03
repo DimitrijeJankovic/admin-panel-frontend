@@ -1,11 +1,11 @@
 <div *ngIf="load" class="mainOrder">
-    <h1 id="title">Order {{ order.id }}</h1> 
+    <h1 id="title">Order {{ order.id }}</h1>
     <div class="container-fluid">
         <div class="row">
-            <div class=".col-6 col-lg-4">
+            <div class=".col-4 col-lg-4">
                 <mat-form-field>
                     <input matInput name="created" #created="ngModel" [matDatepicker]="dateCreated" [min]="minDate"
-                        date="true" [(ngModel)]="order.date_created" placeholder="Date Created">
+                        date="true" [(ngModel)]="order.date_created" placeholder="Date Created" required>
                     <mat-datepicker-toggle matSuffix [for]="dateCreated"></mat-datepicker-toggle>
                     <mat-datepicker #dateCreated></mat-datepicker>
                 </mat-form-field>
@@ -32,8 +32,15 @@
                 </mat-form-field>
                 <br>
                 <mat-form-field>
+                    <input matInput name="requested" #requested="ngModel" [matDatepicker]="requestedDate" [min]="minDate"
+                        date="true" [(ngModel)]="order.requested_date" placeholder="Requested Date" required>
+                    <mat-datepicker-toggle matSuffix [for]="requestedDate"></mat-datepicker-toggle>
+                    <mat-datepicker #requestedDate></mat-datepicker>
+                </mat-form-field>
+                <br>
+                <mat-form-field>
                     <mat-select [(ngModel)]="order.status_id" placeholder="Order status" [formControl]="selected"
-                        [errorStateMatcher]="matcher1">
+                        [errorStateMatcher]="matcher1" required>
                         <mat-option>Clear</mat-option>
                         <mat-option *ngFor="let statuse of statuses" value="{{ statuse.id }}">{{ statuse.name }}</mat-option>
                     </mat-select>
@@ -42,20 +49,19 @@
                 <br>
                 <mat-form-field>
                     <mat-select [(ngModel)]="order.payment" placeholder="Payment" [formControl]="selected3"
-                        [errorStateMatcher]="matcher3">
+                        [errorStateMatcher]="matcher3" required>
                         <mat-option>Clear</mat-option>
                         <mat-option value="0">Not Paid</mat-option>
                         <mat-option value="1">Paid</mat-option>
                     </mat-select>
                     <mat-error *ngIf="selected3.hasError('required')">You must make a selection</mat-error>
                 </mat-form-field>
-                <br>
-                
+            </div>
+            <div class=".col-4 col-lg-4">
                 <mat-form-field>
                     <input [(ngModel)]="order.price" matInput name='price' type='number' step="0.1" min="0" placeholder='Price'>
                 </mat-form-field>
-            </div>
-            <div class=".col-6 col-lg-5">
+                <br>
                 <mat-form-field>
                     <input [(ngModel)]="order.delivery_price" matInput name='delivery_price' type='number' step="0.1"
                         min="0" placeholder='Delivery Price'>
@@ -63,7 +69,7 @@
                 <br>
                 <mat-form-field class="example-full-width">
                     <input [(ngModel)]="order.adress" matInput placeholder="Address" [formControl]="addressFormControl"
-                        [errorStateMatcher]="address">
+                        [errorStateMatcher]="address" required>
                     <mat-error *ngIf="addressFormControl.hasError('required')">
                         Address is <strong>required</strong>
                     </mat-error>
@@ -75,7 +81,7 @@
                 <br>
                 <mat-form-field class="example-full-width">
                     <input [(ngModel)]="order.state" matInput placeholder="State" [formControl]="stateFormControl"
-                        [errorStateMatcher]="state">
+                        [errorStateMatcher]="state" required>
                     <mat-error *ngIf="stateFormControl.hasError('required')">
                         State is <strong>required</strong>
                     </mat-error>
@@ -84,7 +90,7 @@
 
                 <mat-form-field>
                     <mat-select [(ngModel)]="order.country" placeholder="Countrie" [formControl]="selected2"
-                        [errorStateMatcher]="matcher1">
+                        [errorStateMatcher]="matcher1" required>
                         <mat-option>Clear</mat-option>
                         <mat-option *ngFor="let countrie of countries" value="{{ countrie.id }}">{{ countrie.name }}</mat-option>
                     </mat-select>
@@ -94,23 +100,20 @@
 
                 <mat-form-field>
                     <mat-select [(ngModel)]="order.delivery_type_id" placeholder="Delivery Type" [formControl]="selected4"
-                        [errorStateMatcher]="matcher4">
+                        [errorStateMatcher]="matcher4" required>
                         <mat-option>Clear</mat-option>
                         <mat-option *ngFor="let deliveryType of deliveryTypes" value="{{ deliveryType.id }}">{{
                             deliveryType.name }}</mat-option>
                     </mat-select>
                     <mat-error *ngIf="selected4.hasError('required')">You must make a selection</mat-error>
                 </mat-form-field>
-                <br>
-                <!--
-                <mat-form-field>
-                    <input matInput name="requested" #requested="ngModel" [matDatepicker]="requestedDate" [min]="minDate"
-                        date="true" [(ngModel)]="order.requested_date" placeholder="Requested Date">
-                    <mat-datepicker-toggle matSuffix [for]="requestedDate"></mat-datepicker-toggle>
-                    <mat-datepicker #requestedDate></mat-datepicker>
-                </mat-form-field>
-                <br>
-                -->
+            </div>
+            <div class=".col-4 col-lg-4">
+                <order-img [url]="order.photo_attach_image" [order_id]="order.id"></order-img>
+            </div>
+        </div>
+        <div class="row">
+            <div class=".col-12 col-lg-12">
                 <button (click)="saveOrder()" type="button" class="btn btn-primary">Save</button>
             </div>
         </div>

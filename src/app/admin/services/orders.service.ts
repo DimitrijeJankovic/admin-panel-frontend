@@ -77,6 +77,7 @@ export class OrdersService{
             "date_finished": order.date_finished,
             "date_in_progress": order.date_in_progress,
             "delivery_type_id": order.delivery_type_id,
+            "requested_date": order.requested_date,
             "payment": order.payment,
             "price": order.price,
             "state": order.state,
@@ -105,6 +106,7 @@ export class OrdersService{
             "date_finished": order.date_finished,
             "date_in_progress": order.date_in_progress,
             "delivery_type_id": order.delivery_type_id,
+            "requested_date": order.requested_date,
             "payment": order.payment,
             "price": order.price,
             "state": order.state,
@@ -113,6 +115,16 @@ export class OrdersService{
         }
         
         return this.http.post(environment.serverUrl + '/orders', newOrder, options)
+    }
+
+    removeOrderPhoto(id: number){
+        let headers = new Headers({
+            'Accept': 'application/json',
+            'Authorization': 'Bearer ' + sessionStorage.getItem('adminToken')
+        })
+        let options = new RequestOptions({headers: headers})
+        
+        return this.http.delete(environment.serverUrl + `/order-photo/${id}`, options); 
     }
 
 }

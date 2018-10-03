@@ -36,13 +36,13 @@ export class OrdersPanelComponent implements OnInit{
 
     newOrder(){ 
         if(this.ordersList.length == 0){
-            var order = { "order_id": 'New' }
+            var order = { "order_id": 'new' }
             this.ordersList.push(order)
             this.router.navigate(['/admin/orders/panel/order/new'])
             
         }else{
             var last = this.ordersList[this.ordersList.length - 1]
-            var order = { "order_id": 'New' }
+            var order = { "order_id": 'new' }
 
             if(last.order_id != order.order_id){
                 this.ordersList.push(order)

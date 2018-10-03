@@ -83,5 +83,12 @@ export class ElementComponent implements OnInit{
     ]);
     height = new MyErrorStateMatcher();
     
+    direction: any
+    selected3 = new FormControl(this.direction, [
+        Validators.required,
+        Validators.pattern(this.direction),
+      ]);
+    
+    matcher3 = new MyErrorStateMatcher();
 
 }

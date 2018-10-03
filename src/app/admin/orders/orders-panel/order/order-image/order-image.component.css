@@ -1,0 +1,30 @@
+i{
+    cursor: pointer;
+}
+
+.photoImg{
+    position: relative;
+    padding-top: 20px;
+}
+
+.photoImg img{
+    max-height: 100px;
+}
+
+.removePhoto:hover{
+    color: skyblue;
+}
+
+.image-upload{
+    width: 300px;
+    height: 150px;
+}
+
+.image-upload > input{
+    display: none;
+}
+
+.image-upload img{
+    width: 30px;
+    cursor: pointer;
+}

@@ -19,6 +19,16 @@
                     </mat-error>
                 </mat-form-field>
                 <br>
+                <mat-form-field>
+                    <mat-select [(ngModel)]="element.direction" placeholder="Direction" [formControl]="selected3"
+                        [errorStateMatcher]="matcher3">
+                        <mat-option>Clear</mat-option>
+                        <mat-option value="h">h</mat-option>
+                        <mat-option value="v">v</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="selected3.hasError('required')">You must make a selection</mat-error>
+                </mat-form-field>
+                <br>
                 <button (click)="saveElement()" type="button" class="btn btn-primary">Save</button>
             </div>
         </div>

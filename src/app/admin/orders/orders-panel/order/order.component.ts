@@ -74,7 +74,8 @@ export class OrderComponent implements OnInit{
                     this.order.date_in_progress = (this.order.date_in_progress)? new Date(this.order.date_in_progress) : null
                     this.order.date_finished = (this.order.date_finished)? new Date(this.order.date_finished) : null
                     this.order.date_delivery = (this.order.date_delivery)? new Date(this.order.date_delivery) : null
-                    //this.order.requested_date = (this.order.requested_date)? new Date(this.order.requested_date) : null
+                    this.order.requested_date = (this.order.requested_date)? new Date(this.order.requested_date) : null
+                    
                 }
             },(error) => {
                 this.problem = true
@@ -87,7 +88,7 @@ export class OrderComponent implements OnInit{
         this.order.date_in_progress = (this.order.date_in_progress)? this.datePipe.transform(this.order.date_in_progress, 'y-MM-dd H:m:s') : null
         this.order.date_finished = (this.order.date_finished)? this.datePipe.transform(this.order.date_finished, 'y-MM-dd H:m:s') : null
         this.order.date_delivery = (this.order.date_delivery)? this.datePipe.transform(this.order.date_delivery, 'y-MM-dd H:m:s') : null
-        //this.order.requested_date = (this.order.requested_date)? this.datePipe.transform(this.order.requested_date, 'y-MM-dd H:m:s') : null
+        this.order.requested_date = (this.order.requested_date)? this.datePipe.transform(this.order.requested_date, 'y-MM-dd H:m:s') : null
         
         this.ordersService.editOrder(this.order, this.order.id).subscribe((data: any) => {
             if(!data){

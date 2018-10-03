@@ -22,7 +22,8 @@ export class NewElementComponent{
     element: any = {
         width: null,
         height: null,
-        order_items_id: null
+        order_items_id: null,
+        direction: null
     }
 
     problem: boolean = false
@@ -63,4 +64,12 @@ export class NewElementComponent{
         Validators.required,
     ]);
     height = new MyErrorStateMatcher();
+
+    direction: any
+    selected3 = new FormControl(this.direction, [
+        Validators.required,
+        Validators.pattern(this.direction),
+      ]);
+    
+    matcher3 = new MyErrorStateMatcher();
 }

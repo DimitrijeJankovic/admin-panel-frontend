@@ -7,7 +7,7 @@ import { ElementComponent } from './element/element.component'
 import { NewElementComponent } from './element/new-element/new-element.component'
 
 export const adminPanelRoutes = [
-    { path: '', component: OrdersPanelComponent,children: [
+    { path: '', component: OrdersPanelComponent, children: [
         { path: 'order/new', component: NewOrderComponent },
         { path: 'order/:id', component: OrderComponent },
         { path: 'item/new', component: NewItemComponent },
