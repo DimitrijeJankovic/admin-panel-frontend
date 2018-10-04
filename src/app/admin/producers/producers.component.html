@@ -61,8 +61,8 @@
             <ng-container matColumnDef="action">
                 <th mat-header-cell *matHeaderCellDef> Action </th>
                 <td mat-cell *matCellDef="let element">
-                    <i class="far fa-edit" [routerLink]="['edit', element.producers_id]"></i>
-                    <i class="far fa-trash-alt" (click)="deleteProduce(element.producers_id)"></i>
+                    <i class="far fa-edit" [routerLink]="['edit', element.producers_id]" title="Edit"></i>
+                    <i class="far fa-trash-alt" (click)="deleteProduce(element.producers_id)" title="Delete"></i>
                 </td>
             </ng-container>
 
@@ -74,7 +74,6 @@
     </div>
     <div class="float-right">
         <a href="#" [routerLink]="['new']" routerLinkActive="active" class="btn"><button mat-button color="primary" class="newProduce">Add New</button></a>
-        
     </div>
 
 </div>

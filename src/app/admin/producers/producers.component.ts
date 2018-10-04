@@ -34,7 +34,7 @@ export class ProducersComponent implements OnInit{
     getAllProduces() {
         this.producersService.getAllProducers().subscribe((prod: any) => {
             this.producersList = JSON.parse(prod._body)
-            this.dataSource = new MatTableDataSource(this.producersList)
+            this.dataSource = new MatTableDataSource<IProducers>(this.producersList)
             this.dataSource.sort = this.sort
             this.dataSource.paginator = this.paginator
             
