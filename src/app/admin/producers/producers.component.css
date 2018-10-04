@@ -4,16 +4,22 @@
 }
 
 h1{
-    padding-left: 40px;
-    padding-top: 20px;
-    font-size: 40px;
-    /*color: white;*/
+    font-size: 34px;
+    padding: 20px 0 14px 29px;
 }
 
-.table{
-    /*color: white !important;*/
-    margin-top: 40px;
-    margin-left: 10px;
+table {
+    width: 100%;
+}
+
+th.mat-sort-header-sorted {
+    color: black;
+}
+
+.mat-form-field {
+    font-size: 14px;
+    width: 100%;
+    padding: 10px 20px;
 }
 
 td i{
@@ -26,11 +32,7 @@ td i:hover{
 }
 
 .newProduce{
-    color: skyblue;
-    background-color: #181B20;
-    border: 1px solid skyblue;
-    border-radius: 5px;
-    padding: 7px 15px;
-    cursor: pointer;
+    margin-top: 10px;
+    font-size: 19px;
 }
 

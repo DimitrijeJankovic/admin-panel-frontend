@@ -3,13 +3,16 @@ import { CommonModule } from '@angular/common'
 import { RouterModule } from '@angular/router'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { FileUploadModule } from 'ng2-file-upload';
-import { 
+import {
     MatButtonModule, 
     MatSelectModule, 
     MatInputModule, 
     MatDatepickerModule, 
     MatNativeDateModule, 
-    MatExpansionModule 
+    MatExpansionModule,
+    MatTableModule, 
+    MatPaginatorModule,
+    MatSortModule
 } from '@angular/material';
 
 import { adminRoutes } from './admin.routes'
@@ -50,7 +53,10 @@ import { OrderItemElementsService } from './services/order-item-elements.service
         MatInputModule,
         MatDatepickerModule,
         MatNativeDateModule,
-        MatExpansionModule
+        MatExpansionModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatSortModule
     ],
     declarations: [
         SidebarComponent,

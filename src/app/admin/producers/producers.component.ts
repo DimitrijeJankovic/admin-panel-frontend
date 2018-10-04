@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProducersService, IProducers } from '../services/producers.service';
+import { MatPaginator, MatTableDataSource, MatSort } from '@angular/material';
 
 @Component({
     selector: 'producers',
@@ -10,7 +11,18 @@ import { ProducersService, IProducers } from '../services/producers.service';
 
 export class ProducersComponent implements OnInit{
 
-    producersList:IProducers
+    producersList: any[]
+
+    displayedColumns: string[] = [
+        'producers_id', 'producers_name', 'address', 
+        'address1', 'city', 'state', 'country',
+        'email', 'phone', 'web', 'action'
+    ];
+
+    dataSource: any
+
+    @ViewChild(MatPaginator) paginator: MatPaginator;
+    @ViewChild(MatSort) sort: MatSort;
 
     constructor(private producersService:ProducersService, 
                 private route:ActivatedRoute){}
@@ -22,14 +34,20 @@ export class ProducersComponent implements OnInit{
     getAllProduces() {
         this.producersService.getAllProducers().subscribe((prod: any) => {
             this.producersList = JSON.parse(prod._body)
+            this.dataSource = new MatTableDataSource(this.producersList)
+            this.dataSource.sort = this.sort
+            this.dataSource.paginator = this.paginator
+            
         })
+    }
+
+    applyFilter(filterValue: string) {
+        this.dataSource.filter = filterValue.trim().toLowerCase();
     }
 
     deleteProduce(id) {
 		this.producersService.deleteProducer(id).subscribe( e => { this.getAllProduces() })
 	}
-
-
-    
-    
 }
+
+ 
