@@ -3,7 +3,14 @@ import { CommonModule } from '@angular/common'
 import { RouterModule } from '@angular/router'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { FileUploadModule } from 'ng2-file-upload';
-import { MatButtonModule, MatSelectModule, MatInputModule, MatDatepickerModule, MatNativeDateModule } from '@angular/material';
+import { 
+    MatButtonModule, 
+    MatSelectModule, 
+    MatInputModule, 
+    MatDatepickerModule, 
+    MatNativeDateModule, 
+    MatExpansionModule 
+} from '@angular/material';
 
 import { adminRoutes } from './admin.routes'
 
@@ -20,7 +27,6 @@ import { MaterialsComponent } from './materials/materials.component'
 import { NewMaterialsComponent } from './materials/new-materials/new-materials.component'
 import { EditMaterialsComponent } from './materials/edit-materials/edit-materials.component'
 
-import { CollapsibleWallComponent } from './orders/collapsible-wall/collapsible-wall.component'
 import { OrdersComponent } from './orders/orders.component';
 
 // services
@@ -30,6 +36,7 @@ import { OrdersService } from  './services/orders.service'
 import { SidebarService } from './services/sidebar.service'
 import { OrderItemsService } from './services/order-items.service'
 import { OrderItemElementsService } from './services/order-item-elements.service'
+
 
 @NgModule({
     imports: [
@@ -42,7 +49,8 @@ import { OrderItemElementsService } from './services/order-item-elements.service
         MatSelectModule,
         MatInputModule,
         MatDatepickerModule,
-        MatNativeDateModule
+        MatNativeDateModule,
+        MatExpansionModule
     ],
     declarations: [
         SidebarComponent,
@@ -54,8 +62,7 @@ import { OrderItemElementsService } from './services/order-item-elements.service
         MaterialsComponent,
         NewMaterialsComponent,
         EditMaterialsComponent,
-        CollapsibleWallComponent,
-        OrdersComponent
+        OrdersComponent 
     ],
     providers: [
         ProducersService,

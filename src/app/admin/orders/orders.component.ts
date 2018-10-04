@@ -16,6 +16,8 @@ export class OrdersComponent implements OnInit{
     uploadItemlId :number
     env: string
 
+    panelOpenState = false;
+
     public uploader:FileUploader = new FileUploader({
 		allowedMimeType: ['image/png', 'image/jpeg'],
 		maxFileSize: 1024000,
@@ -46,7 +48,6 @@ export class OrdersComponent implements OnInit{
         // Upload file to server instantly (when user selects it)
 		this.uploader.onAfterAddingFile = (item :FileItem) => {
             item.url = environment.serverUrl + `/order-item-photo/${this.uploadItemlId}`;
-            console.log(item.url);
             
 			item.upload();
 			this.uploader = this.uploader;
@@ -58,12 +59,14 @@ export class OrdersComponent implements OnInit{
     }
 
     getAllOrders(){
-        this.ordersService.getAllOrders().subscribe((prod: any) => {
+        this.ordersService.getOrdersLeyaout().subscribe((prod: any) => {
             this.ordersList = JSON.parse(prod._body)
+            console.log(this.ordersList);
+            
         })
     }
 
-    setUploadId(item_id) { 
+    setUploadId(item_id) {
 		this.uploadItemlId = item_id;
     }
     

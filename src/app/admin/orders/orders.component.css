@@ -38,8 +38,13 @@ td i:hover{
     padding: 5px;
 }
 
+.table2{
+    border: 1px solid #c9c9c9;
+}
+
 .newColor{
-    color: white !important;
+    color: black !important;
+    border: 1px solid #c9c9c9;
 }
 
 .moreTR{
@@ -50,10 +55,6 @@ td i:hover{
 table td{
     border-top: none;
     text-align: center;
-}
-
-.table2{
-    background-color: #3e464a;
 }
 
 h4.title {
