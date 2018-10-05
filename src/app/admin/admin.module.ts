@@ -40,6 +40,8 @@ import { SidebarService } from './services/sidebar.service'
 import { OrderItemsService } from './services/order-items.service'
 import { OrderItemElementsService } from './services/order-item-elements.service'
 
+import { SearchPipe } from './orders/search.pipe'
+
 
 @NgModule({
     imports: [
@@ -68,7 +70,8 @@ import { OrderItemElementsService } from './services/order-item-elements.service
         MaterialsComponent,
         NewMaterialsComponent,
         EditMaterialsComponent,
-        OrdersComponent 
+        OrdersComponent,
+        SearchPipe
     ],
     providers: [
         ProducersService,

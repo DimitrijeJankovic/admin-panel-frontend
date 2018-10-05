@@ -16,8 +16,11 @@ export class OrdersComponent implements OnInit{
     uploadItemlId :number
     env: string
 
-    panelOpenState = false;
-    private sorted = false;
+    panelOpenState = false
+    private sorted = false
+
+    aa:boolean = false;
+    email="";
 
     public uploader:FileUploader = new FileUploader({
 		allowedMimeType: ['image/png', 'image/jpeg'],
@@ -31,15 +34,15 @@ export class OrdersComponent implements OnInit{
 
     // for pagination
     @ViewChildren('pages') pages: QueryList<any>
-    itemsPerPage = 5;
-    numberOfVisiblePaginators = 10;
-    numberOfPaginators: number;
-    paginators: Array<any> = [];
-    activePage = 1;
-    firstVisibleIndex = 1;
-    lastVisibleIndex: number = this.itemsPerPage;
-    firstVisiblePaginator = 0;
-    lastVisiblePaginator = this.numberOfVisiblePaginators;
+    itemsPerPage = 5
+    numberOfVisiblePaginators = 10
+    numberOfPaginators: number
+    paginators: Array<any> = []
+    activePage = 1
+    firstVisibleIndex = 1
+    lastVisibleIndex: number = this.itemsPerPage
+    firstVisiblePaginator = 0
+    lastVisiblePaginator = this.numberOfVisiblePaginators
 
     constructor(private ordersService: OrdersService,
                 private orderItemsService: OrderItemsService,
@@ -179,4 +182,8 @@ export class OrdersComponent implements OnInit{
         this.sorted = !this.sorted;
     }
 
+    setIndex(ii){
+        this.aa=ii;
+        console.log
+    }
 }

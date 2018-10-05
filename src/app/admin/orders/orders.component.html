@@ -3,6 +3,10 @@
 
     <div class="mat-elevation-z8">
 
+        <mat-form-field>
+            <input matInput type="text" [(ngModel)]="email" placeholder="Filter">
+        </mat-form-field>
+
         <table class="table table-responsive-xl">
             <thead>
                 <tr class="th">
@@ -25,7 +29,7 @@
                     <th>Action</th>
                 </tr>
             </thead>
-            <tbody *ngFor='let order of ordersList; let i = index'>
+            <tbody *ngFor='let order of ordersList | customerEmailFilter:email; let i = index'>
                 <tr>
                     <th *ngIf="order.order_id >= firstVisibleIndex && order.order_id <= lastVisibleIndex">{{
                         order.order_id }}</th>
