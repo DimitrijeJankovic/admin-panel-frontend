@@ -1,11 +1,14 @@
-.table{
-    /*color: white !important;*/
-    margin-top: 40px;
-    margin-left: 10px;
+#main h1{
+    font-size: 34px;
+    padding: 20px 0 14px 29px;
 }
 
 td i{
     padding: 0px 10px;
+}
+
+i{
+    color: gray;
 }
 
 td i:hover{
@@ -14,12 +17,8 @@ td i:hover{
 }
 
 .newOrder{
-    color: skyblue;
-    background-color: #181B20;
-    border: 1px solid skyblue;
-    border-radius: 5px;
-    padding: 7px 15px;
-    cursor: pointer;
+    margin-top: 10px;
+    font-size: 19px;
 }
 
 .paind{
@@ -38,6 +37,12 @@ td i:hover{
     padding: 5px;
 }
 
+.th{
+    font-size: 14px;
+    color: gray;
+    cursor: pointer;
+}
+
 .table2{
     border: 1px solid #c9c9c9;
 }
@@ -50,11 +55,6 @@ td i:hover{
 .moreTR{
     cursor: pointer;
     position: relative;
-}
-
-table td{
-    border-top: none;
-    text-align: center;
 }
 
 h4.title {
@@ -89,4 +89,23 @@ table.table2 {
 .image-upload img{
     width: 30px;
     cursor: pointer;
+}
+
+.mat-form-field {
+    font-size: 14px;
+    width: 100%;
+    padding: 30px 20px 10px 20px;
+}
+
+#pag{
+    display: flex; 
+    justify-content: flex-end;
+    margin-right: 10px;
+    margin-top: -20px;
+}
+
+th i{
+    transform: rotate(90deg);
+    font-size: 13px;
+    color: slategray;
 }

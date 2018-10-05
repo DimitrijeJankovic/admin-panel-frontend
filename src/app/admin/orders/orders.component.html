@@ -1,6 +1,192 @@
 <div id="main">
     <h1>Orders</h1>
 
+    <div class="mat-elevation-z8">
+
+        <table class="table table-responsive-xl">
+            <thead>
+                <tr class="th">
+                    <th (click)="sortBy('order_id')" title="Sort">ID</th>
+                    <th (click)="sortBy('user_id')" title="Sort">User</th>
+                    <th (click)="sortBy('date_created')" title="Sort">Date Created</th>
+                    <th (click)="sortBy('date_in_progress')" title="Sort">Date In Progress</th>
+                    <th (click)="sortBy('date_finished')" title="Sort">Date Finished</th>
+                    <th (click)="sortBy('date_delivery')" title="Sort">Delivery Date</th>
+                    <th (click)="sortBy('requested_date')" title="Sort">Requested Date</th>
+                    <th (click)="sortBy('status_type')" title="Sort">Status</th>
+                    <th (click)="sortBy('payment')" title="Sort">Payment</th>
+                    <th (click)="sortBy('price')" title="Sort">Price</th>
+                    <th (click)="sortBy('adress')" title="Sort">Address</th>
+                    <th (click)="sortBy('adress1')" title="Sort">Address1</th>
+                    <th (click)="sortBy('state')" title="Sort">State</th>
+                    <th (click)="sortBy('countrie')" title="Sort">Country</th>
+                    <th (click)="sortBy('delivery_type')" title="Sort">Delivery Type</th>
+                    <th (click)="sortBy('supplied_by_users_id')" title="Sort">Supplied By User</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody *ngFor='let order of ordersList; let i = index'>
+                <tr>
+                    <th *ngIf="order.order_id >= firstVisibleIndex && order.order_id <= lastVisibleIndex">{{
+                        order.order_id }}</th>
+                    <td *ngIf="order.order_id >= firstVisibleIndex && order.order_id <= lastVisibleIndex">{{
+                        order.user_id
+                        }}</td>
+                    <td *ngIf="order.order_id >= firstVisibleIndex && order.order_id <= lastVisibleIndex">{{
+                        order.date_created | date }}</td>
+                    <td *ngIf="order.order_id >= firstVisibleIndex && order.order_id <= lastVisibleIndex">{{
+                        order.date_in_progress | date }}</td>
+                    <td *ngIf="order.order_id >= firstVisibleIndex && order.order_id <= lastVisibleIndex">{{
+                        order.date_finished | date }}</td>
+                    <td *ngIf="order.order_id >= firstVisibleIndex && order.order_id <= lastVisibleIndex">{{
+                        order.date_delivery | date }}</td>
+                    <td *ngIf="order.order_id >= firstVisibleIndex && order.order_id <= lastVisibleIndex">{{
+                        order.requested_date | date }}</td>
+                    <td *ngIf="order.order_id >= firstVisibleIndex && order.order_id <= lastVisibleIndex">{{
+                        order.status_type }}</td>
+                    <td *ngIf="order.order_id >= firstVisibleIndex && order.order_id <= lastVisibleIndex">
+                        <div *ngIf='order.payment == 1' class='paind'>Paid</div>
+                        <div *ngIf='order.payment == 0' class='notPaid'>Not Paid</div>
+                    </td>
+                    <td *ngIf="order.order_id >= firstVisibleIndex && order.order_id <= lastVisibleIndex">{{
+                        order.price }}</td>
+                    <td *ngIf="order.order_id >= firstVisibleIndex && order.order_id <= lastVisibleIndex">{{
+                        order.adress
+                        }}</td>
+                    <td *ngIf="order.order_id >= firstVisibleIndex && order.order_id <= lastVisibleIndex">{{
+                        order.adress1
+                        }}</td>
+                    <td *ngIf="order.order_id >= firstVisibleIndex && order.order_id <= lastVisibleIndex">{{
+                        order.state }}</td>
+                    <td *ngIf="order.order_id >= firstVisibleIndex && order.order_id <= lastVisibleIndex">{{
+                        order.countrie
+                        }}</td>
+                    <td *ngIf="order.order_id >= firstVisibleIndex && order.order_id <= lastVisibleIndex">{{
+                        order.delivery_type }}</td>
+                    <td *ngIf="order.order_id >= firstVisibleIndex && order.order_id <= lastVisibleIndex">{{
+                        order.supplied_by_users_id }}</td>
+                    <td *ngIf="order.order_id >= firstVisibleIndex && order.order_id <= lastVisibleIndex">
+                        <i class="far fa-edit" [routerLink]="['/admin/orders/panel/order', order.order_id]"></i>
+                        <i class="far fa-trash-alt" (click)="deleteOrder(order.order_id)"></i>
+                    </td>
+                </tr>
+                <tr class="moreTR">
+                    <td colspan=17 *ngIf="order.order_id >= firstVisibleIndex && order.order_id <= lastVisibleIndex">
+                        <mat-accordion>
+                            <mat-expansion-panel>
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                        <div class="more">
+                                            More
+                                        </div>
+                                    </mat-panel-title>
+                                </mat-expansion-panel-header>
+                                <h4 class="title">Order Items</h4>
+                                <tr>
+                                    <td>
+                                        <table class="table2">
+                                            <thead class="thead-light">
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>Material ID</th>
+                                                    <th>Quantity</th>
+                                                    <th>Image</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="newColor" *ngFor='let item of order.order_items'>
+                                                <tr>
+                                                    <td>{{ item.id }}</td>
+                                                    <td>{{ item.material_id }}</td>
+                                                    <td>{{ item.quantity }}</td>
+                                                    <td>
+                                                        <div *ngIf='item.photo_attach_image' class='photoImg'>
+                                                            <img src="{{ env + item.photo_attach_image }}">
+                                                            <div class="removePhoto" (click)="removePhoto(item.id)">
+                                                                <span class='far fa-trash-alt'></span>
+                                                                <i>remove image</i>
+                                                            </div>
+                                                        </div>
+                                                        <div *ngIf="!item.photo_attach_image" class='image-upload'>
+                                                            <label for="file-input" (click)='setUploadId(item.id)'>
+                                                                <img src="./../../../assets//images/upload.png" />
+                                                                <i>click to upload photo</i>
+                                                            </label>
+                                                            <input id="file-input" type="file" ng2FileSelect [uploader]="uploader">
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr class="moreTR">
+                                                    <td colspan=4>
+                                                        <mat-accordion>
+                                                            <mat-expansion-panel>
+                                                                <mat-expansion-panel-header>
+                                                                    <mat-panel-title>
+                                                                        More
+                                                                    </mat-panel-title>
+                                                                </mat-expansion-panel-header>
+                                                                <table class="table2">
+                                                                    <thead class="thead-light">
+                                                                        <tr>
+                                                                            <th>ID</th>
+                                                                            <th>Order Item ID</th>
+                                                                            <th>Width</th>
+                                                                            <th>Height</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody class="newColor" *ngFor='let element of item.item_elements'>
+                                                                        <tr>
+                                                                            <td>{{ element.id }}</td>
+                                                                            <td>{{ element.order_items_id }}</td>
+                                                                            <td>{{ element.width }}</td>
+                                                                            <td>{{ element.height }}</td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </mat-expansion-panel>
+                                                        </mat-accordion>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </mat-expansion-panel>
+                        </mat-accordion>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="d-flex" id="pag">
+            <nav class="my-4 pt-2">
+                <ul class="pagination pagination-circle pg-purple mb-0">
+                    <li class="page-item clearfix d-md-block" (click)="firstPage()" [ngClass]="{disabled: activePage == 1}">
+                        <a class="page-link"><i class="fas fa-angle-double-left"></i></a>
+                    </li>
+                    <li class="page-item" (click)="previousPage($event)" *ngIf="!(activePage == 1)">
+                        <a class="page-link" aria-label="Previous">
+                            <i class="fas fa-angle-left"></i>
+                        </a>
+                    </li>
+                    <li #pages *ngFor="let page of paginators | slice:firstVisiblePaginator:lastVisiblePaginator; let i = index"
+                        class="page-item" [ngClass]="{active: i + firstVisiblePaginator + 1 == activePage}">
+                        <a class="page-link waves-light" (click)="changePage($event)" mdbWavesEffect>{{page}}</a>
+                    </li>
+                    <li class="page-item" (click)="nextPage($event)" *ngIf="!(activePage == numberOfPaginators)">
+                        <a class="page-link" aria-label="Next">
+                            <i class="fas fa-angle-right"></i>
+                        </a>
+                    </li>
+                    <li class="page-item clearfix d-none d-md-block" (click)="lastPage()" [ngClass]="{disabled: activePage == numberOfPaginators}">
+                        <a class="page-link"><i class="fas fa-angle-double-right"></i></a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        
+    </div>
+
+    <!--
     <table class="table">
         <thead class="thead-light">
             <tr>
@@ -61,81 +247,83 @@
                                 </mat-panel-title>
                             </mat-expansion-panel-header>
                             <h4 class="title">Order Items</h4>
+            <tr>
+                <td>
+                    <table class="table2">
+                        <thead class="thead-light">
                             <tr>
+                                <th>ID</th>
+                                <th>Material ID</th>
+                                <th>Quantity</th>
+                                <th>Image</th>
+                            </tr>
+                        </thead>
+                        <tbody class="newColor" *ngFor='let item of order.order_items'>
+                            <tr>
+                                <td>{{ item.id }}</td>
+                                <td>{{ item.material_id }}</td>
+                                <td>{{ item.quantity }}</td>
                                 <td>
-                                    <table class="table2">
-                                        <thead class="thead-light">
-                                            <tr>
-                                                <th>ID</th>
-                                                <th>Material ID</th>
-                                                <th>Quantity</th>
-                                                <th>Image</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody class="newColor" *ngFor='let item of order.order_items'>
-                                            <tr>
-                                                <td>{{ item.id }}</td>
-                                                <td>{{ item.material_id }}</td>
-                                                <td>{{ item.quantity }}</td>
-                                                <td>
-                                                    <div *ngIf='item.photo_attach_image' class='photoImg'>
-                                                        <img src="{{ env + item.photo_attach_image }}">
-                                                        <div class="removePhoto" (click)="removePhoto(item.id)">
-                                                            <span class='far fa-trash-alt'></span>
-                                                            <i>remove image</i>
-                                                        </div>
-                                                    </div>
-                                                    <div *ngIf="!item.photo_attach_image" class='image-upload'>
-                                                        <label for="file-input" (click)='setUploadId(item.id)'>
-                                                            <img src="./../../../assets//images/upload.png" />
-                                                            <i>click to upload photo</i>
-                                                        </label>
-                                                        <input id="file-input" type="file" ng2FileSelect [uploader]="uploader">
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr class="moreTR">
-                                                <td colspan=4>
-                                                    <mat-accordion>
-                                                        <mat-expansion-panel>
-                                                            <mat-expansion-panel-header>
-                                                                <mat-panel-title>
-                                                                    More
-                                                                </mat-panel-title>
-                                                            </mat-expansion-panel-header>
-                                                                <table class="table2">
-                                                                    <thead class="thead-light">
-                                                                        <tr>
-                                                                            <th>ID</th>
-                                                                            <th>Order Item ID</th>
-                                                                            <th>Width</th>
-                                                                            <th>Height</th>
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody class="newColor" *ngFor='let element of item.item_elements'>
-                                                                        <tr>
-                                                                            <td>{{ element.id }}</td>
-                                                                            <td>{{ element.order_items_id }}</td>
-                                                                            <td>{{ element.width }}</td>
-                                                                            <td>{{ element.height }}</td>
-                                                                        </tr>
-                                                                    </tbody>
-                                                                </table>
-                                                        </mat-expansion-panel>
-                                                    </mat-accordion>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                    <div *ngIf='item.photo_attach_image' class='photoImg'>
+                                        <img src="{{ env + item.photo_attach_image }}">
+                                        <div class="removePhoto" (click)="removePhoto(item.id)">
+                                            <span class='far fa-trash-alt'></span>
+                                            <i>remove image</i>
+                                        </div>
+                                    </div>
+                                    <div *ngIf="!item.photo_attach_image" class='image-upload'>
+                                        <label for="file-input" (click)='setUploadId(item.id)'>
+                                            <img src="./../../../assets//images/upload.png" />
+                                            <i>click to upload photo</i>
+                                        </label>
+                                        <input id="file-input" type="file" ng2FileSelect [uploader]="uploader">
+                                    </div>
                                 </td>
                             </tr>
-                        </mat-expansion-panel>
-                    </mat-accordion>
+                            <tr class="moreTR">
+                                <td colspan=4>
+                                    <mat-accordion>
+                                        <mat-expansion-panel>
+                                            <mat-expansion-panel-header>
+                                                <mat-panel-title>
+                                                    More
+                                                </mat-panel-title>
+                                            </mat-expansion-panel-header>
+                                            <table class="table2">
+                                                <thead class="thead-light">
+                                                    <tr>
+                                                        <th>ID</th>
+                                                        <th>Order Item ID</th>
+                                                        <th>Width</th>
+                                                        <th>Height</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="newColor" *ngFor='let element of item.item_elements'>
+                                                    <tr>
+                                                        <td>{{ element.id }}</td>
+                                                        <td>{{ element.order_items_id }}</td>
+                                                        <td>{{ element.width }}</td>
+                                                        <td>{{ element.height }}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </mat-expansion-panel>
+                                    </mat-accordion>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </td>
+            </tr>
+            </mat-expansion-panel>
+            </mat-accordion>
+            </td>
             </tr>
         </tbody>
     </table>
+    -->
     <div class="float-right">
-        <a href="#" [routerLink]="['panel']" routerLinkActive="active" class="btn"><button class="newOrder">Add New</button></a>
+        <a href="#" [routerLink]="['panel']" routerLinkActive="active" class="btn"><button mat-button color="primary"
+                class="newOrder">Add New</button></a>
     </div>
 </div>
